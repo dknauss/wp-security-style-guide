@@ -1,1 +1,5 @@
-workspace.code-workspace
+wp-security-style-guide.code-workspace
+.vscode
+.DS_Store
+.gitignore
+*.code-workspace
