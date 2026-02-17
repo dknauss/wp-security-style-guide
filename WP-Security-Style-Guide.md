@@ -1,14 +1,10 @@
-# DRAFT: A Style Guide for Writing About WordPress and Security
+# A Style Guide for Writing About WordPress and Security — DRAFT
 
 **Principles, Practices, and Terminology for Clear, Honest, and Empowering Security Communication**
 
 Dan Knauss • [dan.knauss.ca](https://dan.knauss.ca)
 
 February 2026 • Version 3.7 (DRAFT)
-
-**License and Attribution**
-
-This style guide is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0). Terminology and formatting conventions are adapted from and indebted to the Bishop Fox Cybersecurity Style Guide (2023), used with attribution.
 
 ## 1. Security, Vulnerability, and Trust in Open Source
 
@@ -82,10 +78,12 @@ AI-powered tools are increasingly used in WordPress security—for malware scann
 
 -   **Disclose AI-generated content.** When content, code samples, or analysis are produced with AI assistance, say so. Transparency supports trust.
 
--   **Address AI-specific threat vectors.** AI introduces its own risks to the WordPress ecosystem. When relevant, discuss:
+-   **Address AI-specific threat vectors.** AI introduces its own risks to the WordPress ecosystem. The Verizon DBIR (2025) found that AI-assisted malicious emails have doubled over two years; IBM's Cost of a Data Breach Report (2025) found 16% of breaches involved attackers using AI. When relevant, discuss:
     -   **Prompt injection** — attacks that manipulate AI tools into performing unintended actions.
     -   **Training-data poisoning** — attacks that corrupt AI models by inserting malicious data into training sets.
-    -   **AI-generated phishing** — increasingly sophisticated social engineering content produced by LLMs.
+    -   **AI-generated phishing** — increasingly sophisticated social engineering content produced by LLMs (37% of AI-driven breaches per IBM 2025).
+    -   **Deepfake-based social engineering** — synthetic audio or video impersonating trusted individuals (35% of AI-driven breaches per IBM 2025).
+    -   **Shadow AI** — unsanctioned employee use of AI tools that may leak sensitive data or bypass security controls. See glossary.
     -   **Insecure AI-generated code** — code produced by LLMs that introduces vulnerabilities (e.g., missing input sanitization, improper use of `$wpdb->prepare()`).
 
 -   **Avoid hype and anthropomorphism.** AI is a tool, not a colleague. Don't attribute agency, judgment, or intent to automated systems.
@@ -348,9 +346,9 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **Admin (role)** — The highest default user role in a single-site WordPress installation. Administrators can install plugins, modify themes, manage users, and change site settings. On a Multisite network, the equivalent is Super Admin.
 
-**Application password** — A feature introduced in WordPress 5.6 that generates unique, revocable passwords for REST API and XML-RPC authentication. Application passwords bypass 2FA, do not expire by default, and persist until manually revoked—making them a significant attack surface if not managed carefully.
+**Application password** — A feature introduced in WordPress 5.6 that generates unique, revocable passwords for REST API and XML-RPC authentication. By design, application passwords provide scoped credentials that do not expose the user's main login password, can be individually revoked if compromised, and are not valid for logging into the WordPress Dashboard. However, they bypass 2FA, do not expire by default, and persist until manually revoked — making them an attack surface that requires careful management in enterprise environments.
 
-**Argon2id** — A modern password hashing algorithm designed to resist brute-force attacks. In WordPress-related environments, bcrypt remains widely used, and Argon2id may be available depending on platform and implementation choices.
+**Argon2id** — A modern password hashing algorithm designed to resist brute-force attacks. In WordPress, bcrypt is the default (since 6.8), and Argon2id can be enabled via the `wp_hash_password` core filter on servers with the required PHP extensions (sodium or argon2). Argon2id offers stronger resistance to GPU-accelerated brute-force attacks.
 
 **Attack surface** — The total set of points where an attacker can attempt to enter or extract data from a system. In WordPress, the attack surface includes login forms, the REST API, XML-RPC, file upload handlers, plugin and theme code, and the hosting environment. Reducing the attack surface is a core hardening goal.
 
@@ -358,7 +356,7 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **Auto-update** — WordPress's built-in mechanism for automatically applying updates. Since version 3.7, minor (security) releases are applied automatically by default. Major version and plugin/theme auto-updates can be enabled separately.
 
-**bcrypt** — A password hashing function based on the Blowfish cipher. bcrypt has been the default password hashing algorithm in WordPress core since version 6.8 (November 2024), replacing the older phpass-based hashing. It is mature and widely supported, though Argon2id offers stronger resistance to GPU-based attacks where available.
+**bcrypt** — A password hashing function based on the Blowfish cipher. bcrypt has been the default password hashing algorithm in WordPress core since version 6.8 (November 2024), replacing the older phpass-based hashing. WordPress uses SHA-384 pre-hashing to address bcrypt's 72-byte input limit. Application passwords, password reset keys, and other security tokens use the BLAKE2b algorithm via Sodium. bcrypt is mature and widely supported, though Argon2id offers stronger resistance to GPU-based attacks where available.
 
 **Brute-force attack** — An attack method that attempts to guess login credentials by systematically trying many combinations. In WordPress, this typically targets the `wp-login.php` form. Mitigated by rate limiting, 2FA, and strong password policies.
 
@@ -378,6 +376,8 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **Dashboard** — The WordPress administrative interface, accessed via `/wp-admin/`. Prefer "Dashboard" over "backend" or "admin panel" in user-facing writing.
 
+**Deepfake** — Synthetic media (audio, video, or images) generated or manipulated by AI to impersonate a real person. Deepfakes are increasingly used in social engineering attacks, including impersonation of executives to authorize access or financial transfers. IBM's Cost of a Data Breach Report (2025) found deepfake-based social engineering in 35% of AI-driven breaches.
+
 **Dependency confusion** — A supply chain attack in which a malicious package with the same name as a private dependency is published to a public registry, causing build tools to install the malicious version. Relevant to WordPress sites that use Composer or npm for dependency management.
 
 **EPSS** — Exploit Prediction Scoring System. A model that estimates the probability (0–100%) that a vulnerability will be exploited in the wild within 30 days of scoring. Published by FIRST alongside CVSS, EPSS helps prioritize remediation by real-world exploitability rather than theoretical severity alone.
@@ -394,7 +394,7 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **HSTS** — HTTP Strict Transport Security. An HTTP response header (`Strict-Transport-Security`) that instructs browsers to only connect to a site over HTTPS for a specified period. Prevents protocol downgrade attacks and cookie hijacking. Should be deployed with care—once a browser receives an HSTS header, it will refuse non-HTTPS connections until the `max-age` expires.
 
-**Infostealer** — A category of malware designed to exfiltrate sensitive data from infected devices, including passwords, session cookies, browser data, and cryptocurrency wallets. Infostealers are a rapidly growing threat vector affecting all web platforms, including WordPress.
+**Infostealer** — A category of malware designed to exfiltrate sensitive data from infected devices, including passwords, session cookies, browser data, and cryptocurrency wallets. Infostealers are a rapidly growing threat vector affecting all web platforms, including WordPress. The Verizon DBIR (2025) found that 30% of systems compromised by infostealers were enterprise-licensed devices, and that stolen credentials from infostealers were a significant driver of credential-based breaches.
 
 **IoC (Indicators of Compromise)** — Observable evidence that a system has been compromised, such as unexpected file modifications, unfamiliar user accounts, anomalous outbound network traffic, or known malicious file hashes. In WordPress, common IoCs include injected PHP files in plugin directories, unauthorized admin accounts, and modified core files.
 
@@ -404,7 +404,7 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **Nonce** — In WordPress, a "number used once"—a cryptographic token used to verify that a request originates from a legitimate, authenticated user and is tied to a specific action. Nonces protect against CSRF attacks. Note: despite the name, WordPress nonces are not single-use; they remain valid for a time window (up to 24 hours, in two 12-hour ticks). This is a frequent source of confusion for developers and auditors.
 
-**OWASP Top 10** — A regularly updated list of the ten most critical web application security risks, published by the Open Web Application Security Project. Used as a benchmark for evaluating and improving application security.
+**OWASP Top 10** — A regularly updated list of the ten most critical web application security risks, published by the Open Web Application Security Project. The current edition is the [OWASP Top 10:2025](https://owasp.org/Top10/2025/). Used as a benchmark for evaluating and improving application security.
 
 **Passkey / WebAuthn** — A passwordless authentication standard based on public-key cryptography. The user's device generates a cryptographic key pair; the private key never leaves the device, and the server stores only the public key. Passkeys resist phishing, credential stuffing, and replay attacks. WordPress support is available through plugins and is expected to reach core in a future release.
 
@@ -427,6 +427,8 @@ This glossary defines security-related terms as they are used in the WordPress e
 **Role** — A named collection of capabilities in WordPress. Default roles include Subscriber, Contributor, Author, Editor, and Administrator. Custom roles can be created to implement granular access control.
 
 **SBOM (Software Bill of Materials)** — A formal, machine-readable record of all the components and dependencies in a software package. SBOMs help organizations manage supply chain risk by identifying vulnerable components within themes, plugins, and core libraries.
+
+**Shadow AI** — The unsanctioned use of AI tools (chatbots, code assistants, content generators) by employees without organizational approval or oversight. Shadow AI risks include leaking sensitive data to third-party AI providers and introducing unreviewed AI-generated code or content. IBM's Cost of a Data Breach Report (2025) found shadow AI incidents added $200,000 to average breach costs and that 63% of organizations lack AI governance policies.
 
 **Session hijacking** — An attack in which a threat actor obtains a valid session cookie (e.g., through XSS, network interception, or infostealer malware) and uses it to impersonate the authenticated user. 2FA does not protect against hijacked sessions because the session is already authenticated.
 
@@ -476,7 +478,9 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **WordPress Security Resources**
 
--   [WordPress Security White Paper](https://github.com/dknauss/wp-security-white-paper) v3.0 (2026)
+-   Internal WordPress Security White Paper v3.0 (2026) — maintain this reference in your shared document repository (avoid local absolute file paths).
+
+-   [WordPress Security White Paper (developer.wordpress.org)](https://developer.wordpress.org/apis/security/)
 
 -   [Hardening WordPress — Advanced Administration Handbook](https://developer.wordpress.org/advanced-administration/security/hardening/)
 
@@ -485,6 +489,18 @@ This glossary defines security-related terms as they are used in the WordPress e
 -   [Wordfence Intelligence Vulnerability Database](https://www.wordfence.com/threat-intel/vulnerabilities/) — real-time vulnerability data with proof-of-concept details.
 
 -   [WPScan Vulnerability Database](https://wpscan.com/wordpresses/) — now maintained by Automattic as part of the Jetpack ecosystem.
+
+## Related Documents
+
+-   WordPress Security Architecture and Hardening Guide — Enterprise-focused security architecture and hardening guide covering threat landscape, OWASP Top 10 coverage, server hardening, authentication, supply chain, incident response, and AI security.
+-   NLM WordPress Benchmark — Prescriptive, auditable hardening controls for the full WordPress stack. Use for compliance verification and configuration audits.
+-   WordPress Security White Paper (WordPress.org, September 2025) — The official upstream document describing WordPress core security architecture, maintained at [developer.wordpress.org](https://developer.wordpress.org/apis/security/).
+
+## License and Attribution
+
+This document is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/). You may copy, redistribute, remix, transform, and build upon this material for any purpose, including commercial use, provided you give appropriate credit and distribute your contributions under the same license.
+
+**Sources and Acknowledgments:** Terminology and formatting conventions are adapted from and indebted to the *Bishop Fox Cybersecurity Style Guide* (2023), used with attribution. AI threat data draws on the Verizon Data Breach Investigations Report (2025) and IBM's Cost of a Data Breach Report (2025).
 
 ## 10. Operational Appendix: Vulnerability Communication Workflow
 
