@@ -18,7 +18,7 @@ This repository contains a style guide designed for communicators, developers, a
 ## Related Documents
 
 - **[WordPress Security Architecture and Hardening Guide](WP-Security-Style-Guide.md#related-documents)**: Enterprise-focused guidance.
-- **[NLM WordPress Benchmark](WP-Security-Style-Guide.md#related-documents)**: Prescriptive hardening controls.
+- **[WordPress Security Benchmark](WP-Security-Style-Guide.md#related-documents)**: Prescriptive hardening controls.
 
 ## Usage
 
