@@ -2,9 +2,13 @@
 
 **Principles, Practices, and Terminology for Clear, Honest, and Empowering Security Communication**
 
-Dan Knauss
+Dan Knauss • [dan.knauss.ca](https://dan.knauss.ca)
 
 February 2026 • Version 3.7 (DRAFT)
+
+**License and Attribution**
+
+This style guide is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0). Terminology and formatting conventions are adapted from and indebted to the Bishop Fox Cybersecurity Style Guide (2023), used with attribution.
 
 ## 1. Security, Vulnerability, and Trust in Open Source
 
@@ -472,9 +476,7 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **WordPress Security Resources**
 
--   Internal WordPress Security White Paper v3.0 (2026) — maintain this reference in your shared document repository (avoid local absolute file paths).
-
--   [WordPress Security White Paper (developer.wordpress.org)](https://developer.wordpress.org/apis/security/)
+-   [WordPress Security White Paper](https://github.com/dknauss/wp-security-white-paper) v3.0 (2026)
 
 -   [Hardening WordPress — Advanced Administration Handbook](https://developer.wordpress.org/advanced-administration/security/hardening/)
 
@@ -483,10 +485,6 @@ This glossary defines security-related terms as they are used in the WordPress e
 -   [Wordfence Intelligence Vulnerability Database](https://www.wordfence.com/threat-intel/vulnerabilities/) — real-time vulnerability data with proof-of-concept details.
 
 -   [WPScan Vulnerability Database](https://wpscan.com/wordpresses/) — now maintained by Automattic as part of the Jetpack ecosystem.
-
-**License and Attribution**
-
-This style guide is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0). Terminology and formatting conventions are adapted from and indebted to the Bishop Fox Cybersecurity Style Guide (2023), used with attribution.
 
 ## 10. Operational Appendix: Vulnerability Communication Workflow
 
