@@ -457,7 +457,27 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **Zero Trust** — A security model that requires continuous verification of all users and devices, regardless of network location. No user or system is trusted by default. In WordPress, Zero Trust principles inform practices like requiring 2FA, enforcing session limits, and restricting admin access by IP or device.
 
-## 9. References and Further Reading
+## 9. Operational Appendix: Vulnerability Communication Workflow (Internal)
+
+Plugin/Theme vulnerabilities must always be communicated to customers. To ensure accuracy and consistency, Development provides Customer Success and Marketing with the following details before any public communication:
+
+1.  **Vulnerability description and classification** (critical, high, medium, or low severity based on CVSS).
+2.  **CVE details:** Is there a CVE assigned? Is there a public reference link? Is a proof of concept (PoC) expected?
+3.  **Patch details:** Patch release version number.
+4.  **Timeline and scope:** When was the vulnerability introduced? Are all previous versions affected?
+5.  **Discovery and attribution:** How was the vulnerability found and addressed? Did a security researcher report it to our team or another entity? Is attribution appropriate?
+6.  **Exploitation history:** Was it exploited in the wild? How can customers check whether they were affected? Are there indicators of compromise (IoC)?
+7.  **Additional context:** Any technical nuances or environmental factors.
+
+### 9.1 Vulnerability Communication Workflow (External)
+
+1.  **Preparation:** Development provides the information listed above.
+2.  **Drafting:** Customer Success drafts communications and submits them to leadership for approval.
+3.  **Coordination:** Development releases the patch and notifies Customer Success and Marketing.
+4.  **PSA Release Timing:** Determine a Public Service Announcement (PSA) release timeframe that gives users adequate time to update, based on severity and disclosure status.
+5.  **Execution:** Marketing communicates via internal project management templates and established notification channels.
+
+## 10. References and Further Reading
 
 **Style and Writing Guides**
 
@@ -491,8 +511,8 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 ## Related Documents
 
--   **WordPress Security Architecture and Hardening Guide** — Enterprise-focused security architecture and hardening guide covering threat landscape, OWASP Top 10 coverage, server hardening, authentication, supply chain, incident response, and AI security.
--   **WordPress Security Benchmark** — Prescriptive, auditable hardening controls for the full WordPress stack. Use for compliance verification and configuration audits.
+-   **[WordPress Security Architecture and Hardening Guide](https://github.com/dknauss/wp-security-hardening-guide)** — Enterprise-focused security architecture and hardening guide covering threat landscape, OWASP Top 10 coverage, server hardening, authentication, supply chain, incident response, and AI security.
+-   **[WordPress Security Benchmark](https://github.com/dknauss/wp-security-benchmark)** — Prescriptive, auditable hardening controls for the full WordPress stack. Use for compliance verification and configuration audits.
 -   **WordPress Security White Paper (WordPress.org, September 2025)** — The official upstream document describing WordPress core security architecture, maintained at [developer.wordpress.org](https://developer.wordpress.org/apis/security/).
 
 ## License and Attribution
@@ -500,23 +520,3 @@ This glossary defines security-related terms as they are used in the WordPress e
 This document is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/). You may copy, redistribute, remix, transform, and build upon this material for any purpose, including commercial use, provided you give appropriate credit and distribute your contributions under the same license.
 
 **Sources and Acknowledgments:** Terminology and formatting conventions are adapted from and indebted to the *Bishop Fox Cybersecurity Style Guide* (2023), used with attribution. AI threat data draws on the Verizon Data Breach Investigations Report (2025) and IBM's Cost of a Data Breach Report (2025).
-
-## 10. Operational Appendix: Vulnerability Communication Workflow
-
-Plugin vulnerabilities must always be communicated to customers. To ensure accuracy and consistency, Development provides Customer Success and Marketing with the following details before any public communication:
-
-1.  **Vulnerability description and classification** (critical, high, medium, or low severity based on CVSS).
-2.  **CVE details:** Is there a CVE assigned? Is there a public reference link? Is a proof of concept (PoC) expected?
-3.  **Patch details:** Patch release version number.
-4.  **Timeline and scope:** When was the vulnerability introduced? Are all previous versions affected?
-5.  **Discovery and attribution:** How was the vulnerability found and addressed? Was it reported by a security researcher to our team or another entity? Is attribution appropriate?
-6.  **Exploitation history:** Was it exploited in the wild? How can customers check whether they were affected? Are there indicators of compromise (IoC)?
-7.  **Additional context:** Any technical nuances or environment factors.
-
-### 10.1 Communication Process
-
-1.  **Preparation:** Development provides the information listed above.
-2.  **Drafting:** Customer Success drafts communications and submits them to leadership for approval.
-3.  **Coordination:** Development releases the patch and notifies Customer Success and Marketing.
-4.  **PSA Release Timing:** Determine a Public Service Announcement (PSA) release timeframe that gives users adequate time to update, based on severity and disclosure status.
-5.  **Execution:** Marketing communicates via internal project management templates and established notification channels.
