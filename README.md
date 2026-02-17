@@ -10,15 +10,15 @@ This repository contains a style guide designed for communicators, developers, a
 
 - **[Principles & Practices](WP-Security-Style-Guide.md#1-security-vulnerability-and-trust-in-open-source)**: Core Philosophy on security as a shared responsibility.
 - **[Writing Guidelines](WP-Security-Style-Guide.md#3-writing-about-security-and-vulnerabilities-in-wordpress)**: Practical advice on leading with solutions rather than fear (FUD).
-- **[Voice & Tone](WP-Security-Style-Guide.md#4-audience-voice-and-tone)**: Maintaining consistency Across different contexts and audiences.
+- **[Voice & Tone](WP-Security-Style-Guide.md#4-audience-voice-and-tone)**: Maintaining consistency across different contexts and audiences.
 - **[Technical Formatting](WP-Security-Style-Guide.md#6-technical-formatting-guidelines)**: Guidelines for using monospace fonts, acronyms, and technical terms correctly.
 - **[Vulnerability Communication](WP-Security-Style-Guide.md#7-writing-about-vulnerabilities)**: Standards for describing security flaws, severity levels (CVSS/EPSS), and remediation.
 - **[Glossary](WP-Security-Style-Guide.md#8-glossary-of-wordpress-security-terms)**: A detailed reference for security terms used in the WordPress context.
 
 ## Related Documents
 
-- **[WordPress Security Architecture and Hardening Guide](WP-Security-Style-Guide.md)**: Enterprise-focused guidance.
-- **[WordPress Security Benchmark](WP-Security-Style-Guide.md)**: Prescriptive hardening controls.
+- **[WordPress Security Architecture and Hardening Guide](https://github.com/dknauss/wp-security-hardening-guide)**: Enterprise-focused security architecture and hardening guide covering threat landscape, OWASP Top 10 coverage, server hardening, authentication, supply chain, incident response, and AI security.
+- **[WordPress Security Benchmark](https://github.com/dknauss/wp-security-benchmark)**: Prescriptive, auditable hardening controls for the full WordPress stack. Use for compliance verification and configuration audits.
 
 ## Usage
 

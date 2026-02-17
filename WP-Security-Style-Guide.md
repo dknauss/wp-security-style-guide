@@ -355,7 +355,7 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **Auto-update** — WordPress's built-in mechanism for automatically applying updates. Since version 3.7, minor (security) releases are applied automatically by default. Major version and plugin/theme auto-updates can be enabled separately.
 
-**bcrypt** — A password hashing function based on the Blowfish cipher. bcrypt has been the default password hashing algorithm in WordPress core since version 6.8 (November 2024), replacing the older phpass-based hashing. WordPress uses SHA-384 pre-hashing to address bcrypt's 72-byte input limit. Application passwords, password reset keys, and other security tokens use the BLAKE2b algorithm via Sodium. bcrypt is mature and widely supported, though Argon2id offers stronger resistance to GPU-based attacks where available.
+**bcrypt** — A password hashing function based on the Blowfish cipher. bcrypt has been the default password hashing algorithm in WordPress core since version 6.8 (April 2025), replacing the older phpass-based hashing. WordPress uses SHA-384 pre-hashing to address bcrypt's 72-byte input limit. Application passwords, password reset keys, and other security tokens use the BLAKE2b algorithm via Sodium. bcrypt is mature and widely supported, though Argon2id offers stronger resistance to GPU-based attacks where available.
 
 **Brute-force attack** — An attack method that attempts to guess login credentials by systematically trying many combinations. In WordPress, this typically targets the `wp-login.php` form. Mitigated by rate limiting, 2FA, and strong password policies.
 
@@ -427,7 +427,7 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **SBOM (Software Bill of Materials)** — A formal, machine-readable record of all the components and dependencies in a software package. SBOMs help organizations manage supply chain risk by identifying vulnerable components within themes, plugins, and core libraries.
 
-**Shadow AI** — The unsanctioned use of AI tools (chatbots, code assistants, content generators) by employees without organizational approval or oversight. Shadow AI risks include leaking sensitive data to third-party AI providers and introducing unreviewed AI-generated code or content. IBM's Cost of a Data Breach Report (2025) found shadow AI incidents added $200,000 to average breach costs and that 63% of organizations lack AI governance policies.
+**Shadow AI** — The unsanctioned use of AI tools (chatbots, code assistants, content generators) by employees without organizational approval or oversight. Shadow AI risks include leaking sensitive data to third-party AI providers and introducing unreviewed AI-generated code or content. IBM's Cost of a Data Breach Report (2025) found shadow AI incidents added $200,000 to average breach costs ($670,000 for organizations with high shadow AI prevalence) and that 63% of organizations lack AI governance policies.
 
 **Session hijacking** — An attack in which a threat actor obtains a valid session cookie (e.g., through XSS, network interception, or infostealer malware) and uses it to impersonate the authenticated user. 2FA does not protect against hijacked sessions because the session is already authenticated.
 
