@@ -2,9 +2,8 @@
 
 **Principles, Practices, and Terminology for Clear, Honest, and Empowering Security Communication**
 
-Dan Knauss • [dan.knauss.ca](https://dan.knauss.ca)
-
-February 2026 • Version 3.7 (DRAFT)
+Dan Knauss
+February 16, 2026
 
 ## 1. Security, Vulnerability, and Trust in Open Source
 
@@ -478,7 +477,7 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **WordPress Security Resources**
 
--   Internal WordPress Security White Paper v3.0 (2026) — maintain this reference in your shared document repository (avoid local absolute file paths).
+-   Internal WordPress Security White Paper — maintain this reference in your shared document repository (avoid local absolute file paths).
 
 -   [WordPress Security White Paper (developer.wordpress.org)](https://developer.wordpress.org/apis/security/)
 
@@ -492,9 +491,9 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 ## Related Documents
 
--   WordPress Security Architecture and Hardening Guide — Enterprise-focused security architecture and hardening guide covering threat landscape, OWASP Top 10 coverage, server hardening, authentication, supply chain, incident response, and AI security.
--   NLM WordPress Benchmark — Prescriptive, auditable hardening controls for the full WordPress stack. Use for compliance verification and configuration audits.
--   WordPress Security White Paper (WordPress.org, September 2025) — The official upstream document describing WordPress core security architecture, maintained at [developer.wordpress.org](https://developer.wordpress.org/apis/security/).
+-   **WordPress Security Architecture and Hardening Guide** — Enterprise-focused security architecture and hardening guide covering threat landscape, OWASP Top 10 coverage, server hardening, authentication, supply chain, incident response, and AI security.
+-   **NLM WordPress Benchmark** — Prescriptive, auditable hardening controls for the full WordPress stack. Use for compliance verification and configuration audits.
+-   **WordPress Security White Paper (WordPress.org, September 2025)** — The official upstream document describing WordPress core security architecture, maintained at [developer.wordpress.org](https://developer.wordpress.org/apis/security/).
 
 ## License and Attribution
 
