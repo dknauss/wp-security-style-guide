@@ -492,7 +492,7 @@ This glossary defines security-related terms as they are used in the WordPress e
 ## Related Documents
 
 -   **WordPress Security Architecture and Hardening Guide** — Enterprise-focused security architecture and hardening guide covering threat landscape, OWASP Top 10 coverage, server hardening, authentication, supply chain, incident response, and AI security.
--   **NLM WordPress Benchmark** — Prescriptive, auditable hardening controls for the full WordPress stack. Use for compliance verification and configuration audits.
+-   **WordPress Security Benchmark** — Prescriptive, auditable hardening controls for the full WordPress stack. Use for compliance verification and configuration audits.
 -   **WordPress Security White Paper (WordPress.org, September 2025)** — The official upstream document describing WordPress core security architecture, maintained at [developer.wordpress.org](https://developer.wordpress.org/apis/security/).
 
 ## License and Attribution
