@@ -1,18 +1,14 @@
-��A Style Guide for Writing about
+# DRAFT: A Style Guide for Writing About WordPress and Security
 
-**WordPress and Security**
-
-Principles, Practices, and Terminology
-
-for Clear, Honest, and Empowering Security Communication
+**Principles, Practices, and Terminology for Clear, Honest, and Empowering Security Communication**
 
 Dan Knauss
 
-February 2026 • Version 3.0
+February 2026 • Version 3.6 (DRAFT — EDITED)
 
 ## 1. Security, Vulnerability, and Trust in Open Source
 
-We sell a security product, but the product is not security.
+We maintain a security product, but the product is not security.
 
 As part of the Open Web, WordPress is a commons, and so is WordPress security.
 
@@ -31,6 +27,8 @@ We are confident in the security of our systems when we believe our trust is wel
 Our confidence and trust require maintenance, learning, and growth in cooperative relationships. Together, we take care of our shared tools, knowledge, and relationships — with colleagues, partners, customers, and even competitors.
 
 Because our security and vulnerability are shared collectively, so is responsibility. If responsibility is shared, so is the quality, security, and trust it generates in our customers and marketplace.
+
+Effective security communication must go beyond awareness to foster behavioral change. We prioritize resilience—the ability to recover quickly from inevitable breaches—as much as prevention. Our goal is to make security practices habitual and deeply embedded in our organizational culture.
 
 ## 2. In/vulnerability: Dilemma and Opportunity
 
@@ -108,9 +106,11 @@ Tone adapts to context while the voice remains consistent. The default tone for 
 
 -   **Realistic about problems** — acknowledge risks squarely without catastrophizing.
 
--   **Optimistic about solutions** — emphasize what can be done and what's working.
+-   **Optimistic and Reassuring** — emphasize what can be done and what has been fixed. Reassure the audience that our team is on top of the problem.
 
--   **Down-to-earth** — avoid jargon-heavy abstractions. Prefer plain language. Explain technical terms when you use them.
+-   **Down-to-earth** — avoid jargon-heavy abstractions. Prefer plain language.
+
+-   **Clear, Concise, and Honest** — provide straightforward information without alarming the reader.
 
 > **Tone Shift by Context**
 > Vulnerability disclosure: measured, precise, actionable. No editorializing.
@@ -133,8 +133,10 @@ Use inclusive, contemporary language. Some traditional security terminology carr
 | — | — |
 | allowlist / denylist | whitelist / blacklist |
 | primary / replica | master / slave |
-| credential stuffing attack | brute-force hacking |
+| brute-force attack / credential stuffing attack | brute-force hacking |
 | threat actor | hacker (when meaning attacker) |
+
+Note: "brute-force attack" and "credential stuffing attack" are distinct categories. Use whichever term accurately describes the attack being discussed. See the glossary for definitions.
 
 
 When referring to people who exploit systems maliciously, prefer specific terms like "threat actor," "attacker," or "cybercriminal" over the ambiguous "hacker," which has positive connotations in many technical communities.
@@ -149,9 +151,9 @@ WordPress has its own vocabulary. Use terms consistently and prefer the forms fa
 
 -   **Theme** — a collection of templates and stylesheets that control a site's visual presentation.
 
--   **wp-admin** — the URL path to the WordPress admin area. Set in monospace (wp-admin) when referring to the path.
+-   **wp-admin** — the URL path to the WordPress admin area. Set in monospace (`wp-admin`) when referring to the path.
 
--   **wp-config.php** — the primary WordPress configuration file. Always in monospace.
+-   **wp-config.php** — the primary WordPress configuration file. Always in monospace (`wp-config.php`).
 
 -   **Multisite** — a WordPress feature enabling multiple sites on one installation. One word, capitalized.
 
@@ -165,21 +167,23 @@ Use two font treatments to distinguish between human-readable and machine-readab
 
 -   **Normal font** (the document's body typeface) for names of products, organizations, document titles, and human-facing concepts: WordPress, Cloudflare, an SSL certificate.
 
--   **Monospace font** (like this) for code, commands, file paths, configuration values, and machine-facing identifiers: wp-config.php, DISALLOW_FILE_MODS, wp_kses().
+-   **Monospace font** (like this) for code, commands, file paths, configuration values, and machine-facing identifiers: `wp-config.php`, `DISALLOW_FILE_MODS`, `wp_kses()`.
 
 ### 6.2 When to Use Monospace
 
--   File names and paths: wp-config.php, /wp-content/uploads/
+-   File names and paths: `wp-config.php`, `/wp-content/uploads/`
 
--   Configuration constants and PHP functions: FORCE_SSL_ADMIN, current_user_can()
+-   Configuration constants and PHP functions: `FORCE_SSL_ADMIN`, `current_user_can()`
 
--   Command-line tools and commands: wp-cli, ssh, fail2ban
+-   Command-line tools and commands: `wp-cli`, `ssh`, `fail2ban`
 
 -   Database fields, table names, and environment variables
 
--   HTTP headers, status codes, and URL parameters: X-Frame-Options, 403, ?author=1
+-   HTTP headers, status codes, and URL parameters: `X-Frame-Options`, `403`, `?author=1`
 
--   CVE identifiers and version numbers in technical context: CVE-2024-1234, WordPress 6.5.2
+-   CVE identifiers and version numbers in technical context: `CVE-2024-1234`, `WordPress 6.5.2`
+
+> **Boundary rule:** Use monospace when the version number is the point of the sentence—the reader needs to act on it (e.g., "Update to `3.2.1`"). Use normal font when the version appears as background context in running prose (e.g., "WordPress 6.5 introduced…").
 
 ### 6.3 When to Use Normal Font
 
@@ -217,18 +221,35 @@ When writing about specific vulnerabilities, follow established responsible disc
 
 6.  Credit the researcher or security team that reported the issue, consistent with responsible disclosure norms.
 
-> **Template: Vulnerability Summary**
-> [Plugin/Theme Name] versions [X] through [Y] contain a [vulnerability type] vulnerability ([CVE-YYYY-NNNNN]) rated [severity]. Authenticated users with [role] access or above can [exploit description]. Update to version [Z] or later to resolve this issue. [Credit to researcher/team for responsible disclosure.]
+> **Template: Vulnerability Summary (Authenticated)**
+> [Plugin/Theme Name] versions `[X]` through `[Y]` contain a [vulnerability type] vulnerability (`[CVE-YYYY-NNNNN]`) rated [severity]. Authenticated users with [role] access or above can [exploit description]. Update to version `[Z]` or later to resolve this issue. [Credit to researcher/team for responsible disclosure.]
+>
+> **Template: Vulnerability Summary (Unauthenticated)**
+> [Plugin/Theme Name] versions `[X]` through `[Y]` contain a [vulnerability type] vulnerability (`[CVE-YYYY-NNNNN]`) rated [severity]. Unauthenticated attackers can [exploit description] without any login credentials. Update to version `[Z]` or later to resolve this issue. [Credit to researcher/team for responsible disclosure.]
 
 
 ### 7.2 Severity Language
 
-Match the urgency of your language to the actual severity of the vulnerability. Avoid words like "critical" or "dangerous" for low-severity issues. Conversely, don't understate genuinely critical vulnerabilities.
+Match the urgency of your language to the actual severity of the vulnerability. We use the [Common Vulnerability Scoring System](https://www.first.org/cvss/) (CVSS) to assess which level of severity applies. Note: CVSS 4.0 was published in November 2023 and is the current standard; many vulnerability databases still report CVSS 3.1 scores alongside 4.0 during the transition. Use whichever version your source provides and note the version number (e.g., "CVSS 3.1: 8.8" or "CVSS 4.0: 8.7"). Reporting requirements vary based on this assessment:
+
+-   **Critical Severity** — Very serious vulnerabilities that could compromise a website detrimentally. Always reported to customers in a dedicated email.
+-   **High Severity** — Serious vulnerabilities requiring prompt action. Always reported to customers in a dedicated email.
+-   **Medium Severity** — Vulnerabilities with moderate impact. Development, Support, and Marketing decide whether to dedicate an email.
+-   **Low Severity** — Localized or low-impact issues. Reported in Product Update emails only.
+
+| **CVSS Range** | **Internal Label** | **Default Communication Channel** |
+| — | — | — |
+| 9.0–10.0 | Critical | Dedicated customer email |
+| 7.0–8.9 | High | Dedicated customer email |
+| 4.0–6.9 | Medium | Case-by-case decision by Development, Support, and Marketing |
+| 0.1–3.9 | Low | Product update email |
 
 | **✓ Do** | **✗ Don't** |
 | — | — |
 | "Critical: unauthenticated remote code execution" | "Extremely dangerous flaw found in popular plugin!" |
 | "Low severity: authenticated stored XSS requiring administrator role" | "Minor issue, probably nothing to worry about." |
+
+While these severity levels mean different things for our customers, all vulnerability communications should follow the same professional procedures.
 
 
 ### 7.3 Avoiding Sensationalism
@@ -237,15 +258,51 @@ Security news attracts clicks, and sensationalism is common in the WordPress sec
 
 Write with precision. If a vulnerability requires administrator-level authentication to exploit, say so. If it affects a plugin with 200 active installations, provide that context. Help the reader assess whether the issue is relevant to them.
 
+When writing about a vulnerability, include these context signals so readers can self-assess relevance:
+
+-   **Active install count** of the affected plugin or theme.
+-   **Authentication requirement** — does exploitation require a logged-in user, and at what role level?
+-   **Default vs. non-default configuration** — is the vulnerable feature enabled by default?
+-   **Affected version range** — which versions are vulnerable, and how far back does it go?
+-   **Auto-update availability** — can users receive the patch automatically?
+
+### 7.4 Writing about Core vs. Plugin vs. Theme Vulnerabilities
+
+WordPress core vulnerabilities, plugin vulnerabilities, and theme vulnerabilities have different disclosure norms, timelines, and audience expectations. Adjust your writing accordingly:
+
+-   **Core vulnerabilities** are handled by the WordPress Security Team, coordinated with major hosting providers, and typically auto-patched to all supported versions. The audience expects measured, factual language. Credit the Security Team's process.
+-   **Plugin vulnerabilities** are handled by individual plugin authors. Quality and response times vary widely. The WordPress Plugin Security Team on WordPress.org may force-update or close plugins. Emphasize the user's responsibility to update promptly.
+-   **Theme vulnerabilities** follow a similar pattern to plugins but receive less public attention. Provide the same level of specificity—name the theme, the affected versions, and the fix.
+
+### 7.5 Naming Plugins and Themes in Vulnerability Writing
+
+Always name the affected plugin or theme. Users cannot act on vague warnings. However, exercise proportionality:
+
+-   For widely used plugins (100,000+ active installations), the public interest in disclosure is high and the name will appear in vulnerability databases regardless.
+-   For smaller plugins (under 1,000 active installations), the same public disclosure reaches a much smaller affected audience but may disproportionately affect the plugin author's reputation. Ensure the description is precise and fair—state facts, not judgments about code quality.
+-   Never editorialize about a plugin author's competence or responsiveness. Stick to what happened, what was fixed, and what users should do.
+
+### 7.6 Operational Policy Boundary
+
+This style guide defines *writing standards*—how to communicate about vulnerabilities clearly, accurately, and consistently. The operational procedures for *who does what and when* during a vulnerability response are maintained separately in Section 10 (Operational Appendix). This separation ensures the style guidance remains stable even as internal workflows evolve.
+
 ## 8. Glossary of WordPress Security Terms
 
 This glossary defines security-related terms as they are used in the WordPress ecosystem. Terms are listed alphabetically. Where a term has both a general and a WordPress-specific meaning, the WordPress usage is emphasized.
 
 > **2FA / MFA** — Two-factor authentication / multi-factor authentication. A security mechanism requiring two or more verification methods (typically a password plus a time-based code from an authenticator app or hardware key) to access an account. In WordPress, 2FA is implemented through plugins or managed hosting features.
 >
+> **Action-gated reauthentication** — A security mechanism that requires a user to re-verify their identity (usually via password and 2FA) specifically before performing a sensitive or destructive action, such as installing a plugin, deleting a theme, or changing user roles. Also known as "sudo mode."
+>
 > **Admin (role)** — The highest default user role in a single-site WordPress installation. Administrators can install plugins, modify themes, manage users, and change site settings. On a Multisite network, the equivalent is Super Admin.
 >
-> **Auth cookie** — The session cookie WordPress sets when a user logs in. It contains an encrypted token that identifies the authenticated user and allows them to access the Dashboard without re-entering credentials until the cookie expires or the session is terminated.
+> **Application password** — A feature introduced in WordPress 5.6 that generates unique, revocable passwords for REST API and XML-RPC authentication. Application passwords bypass 2FA, do not expire by default, and persist until manually revoked—making them a significant attack surface if not managed carefully.
+>
+> **Argon2id** — A modern password hashing algorithm designed to resist brute-force attacks. In WordPress-related environments, bcrypt remains widely used, and Argon2id may be available depending on platform and implementation choices.
+>
+> **bcrypt** — A password hashing function based on the Blowfish cipher. bcrypt is the default password hashing algorithm in WordPress core through at least version 6.7. It is mature and widely supported, though Argon2id offers stronger resistance to GPU-based attacks where available.
+>
+> **Auth cookie** — The session cookie WordPress sets when a user logs in. It contains the username, an expiration timestamp, and an HMAC signature derived from the authentication keys and salts in `wp-config.php`. This is a signed (not encrypted) token that allows the user to access the Dashboard without re-entering credentials until the cookie expires or the session is terminated.
 >
 > **Auto-update** — WordPress's built-in mechanism for automatically applying updates. Since version 3.7, minor (security) releases are applied automatically by default. Major version and plugin/theme auto-updates can be enabled separately.
 >
@@ -263,11 +320,13 @@ This glossary defines security-related terms as they are used in the WordPress e
 >
 > **CVE** — Common Vulnerabilities and Exposures. A standardized identifier (e.g., CVE-2024-1234) assigned to publicly disclosed security vulnerabilities. CVE numbers are issued by authorized numbering authorities.
 >
-> **CVSS** — Common Vulnerability Scoring System. A standardized framework for rating the severity of vulnerabilities on a 0--10 scale. Scores classify vulnerabilities as None (0), Low (0.1--3.9), Medium (4.0--6.9), High (7.0--8.9), or Critical (9.0--10.0).
+> **CVSS** — Common Vulnerability Scoring System. A standardized framework for rating the severity of vulnerabilities on a 0–10 scale. Scores classify vulnerabilities as None (0), Low (0.1–3.9), Medium (4.0–6.9), High (7.0–8.9), or Critical (9.0–10.0).
 >
 > **Dashboard** — The WordPress administrative interface, accessed via /wp-admin/. Prefer "Dashboard" over "backend" or "admin panel" in user-facing writing.
 >
 > **Fail2Ban** — A server-level intrusion prevention tool that monitors log files and bans IP addresses showing malicious patterns (e.g., repeated failed login attempts). Integrates with WordPress through custom jail configurations.
+>
+> **FedRAMP** — The Federal Risk and Authorization Management Program. A United States government-wide program that provides a standardized approach to security assessment, authorization, and continuous monitoring for cloud products and services. Relevant for enterprise WordPress deployments in government and highly regulated sectors.
 >
 > **FUD** — Fear, uncertainty, and doubt. A rhetorical strategy that exaggerates threats to motivate action (usually purchasing a product). Avoid FUD in security writing; it erodes trust and impairs informed decision-making.
 >
@@ -275,9 +334,11 @@ This glossary defines security-related terms as they are used in the WordPress e
 >
 > **Infostealer** — A category of malware designed to exfiltrate sensitive data from infected devices, including passwords, session cookies, browser data, and cryptocurrency wallets. Infostealers are a rapidly growing threat vector affecting all web platforms, including WordPress.
 >
+> **IoC (Indicators of Compromise)** — Observable evidence that a system has been compromised, such as unexpected file modifications, unfamiliar user accounts, anomalous outbound network traffic, or known malicious file hashes. In WordPress, common IoCs include injected PHP files in plugin directories, unauthorized admin accounts, and modified core files.
+>
 > **Multisite** — A WordPress feature that allows multiple sites to be run from a single WordPress installation, sharing the same database and file system. Security considerations differ from single-site installations, particularly around user roles and network-level settings.
 >
-> **Nonce** — In WordPress, a "number used once"—a cryptographic token used to verify that a request originates from a legitimate, authenticated user and is tied to a specific action. Nonces protect against CSRF attacks.
+> **Nonce** — In WordPress, a "number used once"—a cryptographic token used to verify that a request originates from a legitimate, authenticated user and is tied to a specific action. Nonces protect against CSRF attacks. Note: despite the name, WordPress nonces are not single-use; they remain valid for a time window (up to 24 hours, in two 12-hour ticks). This is a frequent source of confusion for developers and auditors.
 >
 > **OWASP Top 10** — A regularly updated list of the ten most critical web application security risks, published by the Open Web Application Security Project. Used as a benchmark for evaluating and improving application security.
 >
@@ -287,17 +348,21 @@ This glossary defines security-related terms as they are used in the WordPress e
 >
 > **Plugin** — A software extension that adds functionality to WordPress. Plugins run with the same privileges as WordPress core, making them a significant component of the site's security posture. Always one word, lowercase in running text.
 >
+> **PoC (Proof of Concept)** — In security, a demonstration or snippet of code that proves a vulnerability is exploitable.
+>
 > **Principle of Least Privilege (PoLP)** — A security principle requiring that users and processes be granted only the minimum permissions necessary to perform their functions. In WordPress, this means limiting admin accounts, restricting file modification capabilities, and using custom roles.
 >
-> **Responsible disclosure** — A practice in which a security researcher reports a vulnerability privately to the affected vendor, allowing time for a patch before public disclosure. The WordPress Security Team follows this practice and encourages it across the ecosystem.
+> **Responsible disclosure** — A practice in which a security researcher reports a vulnerability privately to the affected vendor, allowing time for a patch before public disclosure. The WordPress Security Team follows this practice for core; the WordPress Plugin Security Team handles plugin-specific vulnerability review, forced updates, and plugin closures on WordPress.org.
 >
 > **REST API** — WordPress's built-in API for programmatic access to site data. Sensitive endpoints require authentication. The REST API can expose information (e.g., user enumeration via /wp-json/wp/v2/users) if not properly restricted.
 >
 > **Role** — A named collection of capabilities in WordPress. Default roles include Subscriber, Contributor, Author, Editor, and Administrator. Custom roles can be created to implement granular access control.
 >
+> **SBOM (Software Bill of Materials)** — A formal, machine-readable record of all the components and dependencies in a software package. SBOMs help organizations manage supply chain risk by identifying vulnerable components within themes, plugins, and core libraries.
+>
 > **Session hijacking** — An attack in which a threat actor obtains a valid session cookie (e.g., through XSS, network interception, or infostealer malware) and uses it to impersonate the authenticated user. 2FA does not protect against hijacked sessions because the session is already authenticated.
 >
-> **SQL injection (SQLi)** — An attack that inserts malicious SQL code into queries executed by the database. WordPress mitigates SQLi through the $wpdb-\>prepare() method, which parameterizes queries.
+> **SQL injection (SQLi)** — An attack that inserts malicious SQL code into queries executed by the database. WordPress mitigates SQLi through the `$wpdb->prepare()` method, which parameterizes queries.
 >
 > **Supply chain attack** — An attack that compromises software through its dependencies or distribution channels rather than targeting the software directly. In WordPress, this can occur through compromised plugins, themes, or build tools.
 >
@@ -339,13 +404,38 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **WordPress Security Resources**
 
--   [WordPress Security White Paper](https://developer.wordpress.org/apis/security/)
+-   Internal WordPress Security White Paper v3.0 (2026) — maintain this reference in your shared document repository (avoid local absolute file paths).
+
+-   [WordPress Security White Paper (developer.wordpress.org)](https://developer.wordpress.org/apis/security/)
 
 -   [Hardening WordPress — Advanced Administration Handbook](https://developer.wordpress.org/advanced-administration/security/hardening/)
 
 -   [Patchstack WordPress Vulnerability Database](https://patchstack.com/database/)
 
+-   [Wordfence Intelligence Vulnerability Database](https://www.wordfence.com/threat-intel/vulnerabilities/) — real-time vulnerability data with proof-of-concept details.
+
+-   [WPScan Vulnerability Database](https://wpscan.com/wordpresses/) — now maintained by Automattic as part of the Jetpack ecosystem.
+
 **License and Attribution**
 
 This style guide is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0). Terminology and formatting conventions are adapted from and indebted to the Bishop Fox Cybersecurity Style Guide (2023), used with attribution.
-��2Ffile:///Users/danknauss/Desktop/Security/WP-Security-Style-Guide-v3.md
+
+## 10. Operational Appendix: Vulnerability Communication Workflow
+
+Plugin vulnerabilities must always be communicated to customers. To ensure accuracy and consistency, Development provides Customer Success and Marketing with the following details before any public communication:
+
+1.  **Vulnerability description and classification** (critical, high, medium, or low severity based on CVSS).
+2.  **CVE details:** Is there a CVE assigned? Is there a public reference link? Is a proof of concept (PoC) expected?
+3.  **Patch details:** Patch release version number.
+4.  **Timeline and scope:** When was the vulnerability introduced? Are all previous versions affected?
+5.  **Discovery and attribution:** How was the vulnerability found and addressed? Was it reported by a security researcher to our team or another entity? Is attribution appropriate?
+6.  **Exploitation history:** Was it exploited in the wild? How can customers check whether they were affected? Are there indicators of compromise (IoC)?
+7.  **Additional context:** Any technical nuances or environment factors.
+
+### 10.1 Communication Process
+
+1.  **Preparation:** Development provides the information listed above.
+2.  **Drafting:** Customer Success drafts communications and submits them to leadership for approval.
+3.  **Coordination:** Development releases the patch and notifies Customer Success and Marketing.
+4.  **PSA Release Timing:** Determine a Public Service Announcement (PSA) release timeframe that gives users adequate time to update, based on severity and disclosure status.
+5.  **Execution:** Marketing communicates via internal project management templates and established notification channels.
