@@ -4,7 +4,7 @@
 
 Dan Knauss
 
-February 2026 • Version 3.6 (DRAFT — EDITED)
+February 2026 • Version 3.7 (DRAFT)
 
 ## 1. Security, Vulnerability, and Trust in Open Source
 
@@ -61,7 +61,7 @@ Remember that the vast majority of WordPress compromises trace back to a few rec
 When assigning responsibility, make sure it serves a purpose. Responsibility should point toward action, not blame. Be clear about what is within the user's control, what depends on their hosting provider, and what falls to the WordPress core team or plugin developers. Level with your audience, but don't push them away.
 
 | **✓ Do** | **✗ Don't** |
-| — | — |
+| --- | --- |
 | "This vulnerability affects sites running Plugin X versions prior to 3.2. Update immediately to version 3.2.1, which includes a patch." | "Your site could be hacked at any moment if you use Plugin X." |
 | "Strong passwords and two-factor authentication significantly reduce the risk of unauthorized access." | "If you get hacked, it's your own fault for using weak passwords." |
 
@@ -69,6 +69,39 @@ When assigning responsibility, make sure it serves a purpose. Responsibility sho
 ### 3.4 Make Security Accessible and Engaging
 
 Write for the WordPress user who is still learning. Security topics can be dry, intimidating, or both. Work to make them interesting, practical, and empowering. Use clear examples, relatable scenarios, and plain language. If a concept requires technical depth, build up to it. Always define terms on first use.
+
+### 3.5 Writing about AI, LLMs, and Automated Security Tools
+
+AI-powered tools are increasingly used in WordPress security—for malware scanning, anomaly detection, code review, and vulnerability assessment. When writing about these tools, follow these principles:
+
+-   **Be specific about capabilities.** Describe what the tool does in concrete terms (e.g., "pattern matching against known malware signatures," "anomaly detection in file modification patterns") rather than vague claims. Avoid describing AI tools as "intelligent," "thinking," or "understanding"—they perform computation, not cognition.
+
+-   **Disclose AI-generated content.** When content, code samples, or analysis are produced with AI assistance, say so. Transparency supports trust.
+
+-   **Address AI-specific threat vectors.** AI introduces its own risks to the WordPress ecosystem. When relevant, discuss:
+    -   **Prompt injection** — attacks that manipulate AI tools into performing unintended actions.
+    -   **Training-data poisoning** — attacks that corrupt AI models by inserting malicious data into training sets.
+    -   **AI-generated phishing** — increasingly sophisticated social engineering content produced by LLMs.
+    -   **Insecure AI-generated code** — code produced by LLMs that introduces vulnerabilities (e.g., missing input sanitization, improper use of `$wpdb->prepare()`).
+
+-   **Avoid hype and anthropomorphism.** AI is a tool, not a colleague. Don't attribute agency, judgment, or intent to automated systems.
+
+| **✓ Do** | **✗ Don't** |
+| --- | --- |
+| "The scanner uses pattern matching to identify known malware signatures." | "Our AI intelligently detects all threats." |
+| "This code was generated with AI assistance and has been reviewed for security." | "Our AI wrote secure code." |
+
+### 3.6 Writing about Compliance and Regulatory Frameworks
+
+WordPress is often deployed in environments subject to regulatory requirements (SOC 2, PCI-DSS, HIPAA, GDPR, FedRAMP). When writing about compliance:
+
+-   **Don't claim WordPress is "compliant."** Software is not compliant; deployments are. A specific WordPress installation, configured and operated in a particular way, may meet the requirements of a given framework. The software alone does not.
+
+-   **Reference the specific framework and control.** Vague claims like "meets industry standards" are unhelpful. When making a compliance-related statement, cite the framework, the control or requirement, and how the WordPress configuration addresses it (e.g., "Enforcing 2FA for all administrator accounts supports NIST SP 800-53 IA-2(1)").
+
+-   **Acknowledge shared responsibility.** Compliance in a WordPress deployment depends on the software, the hosting environment, and the site operator. Be clear about which layer is responsible for what.
+
+-   **Distinguish between certification and alignment.** An organization can be *certified* against a framework (e.g., SOC 2 Type II) or *aligned* with its principles without formal certification. Use the correct term.
 
 ## 4. Audience, Voice, and Tone
 
@@ -130,13 +163,13 @@ Security writing can easily become a closed conversation among experts. Actively
 Use inclusive, contemporary language. Some traditional security terminology carries exclusionary connotations or has clearer modern alternatives:
 
 | **✓ Do** | **✗ Don't** |
-| — | — |
+| --- | --- |
 | allowlist / denylist | whitelist / blacklist |
 | primary / replica | master / slave |
 | brute-force attack / credential stuffing attack | brute-force hacking |
 | threat actor | hacker (when meaning attacker) |
 
-Note: "brute-force attack" and "credential stuffing attack" are distinct categories. Use whichever term accurately describes the attack being discussed. See the glossary for definitions.
+Note: "brute-force attack" and "credential stuffing attack" are distinct categories. Use whichever term accurately describes the attack being discussed. See the [glossary](#8-glossary-of-wordpress-security-terms) for definitions.
 
 
 When referring to people who exploit systems maliciously, prefer specific terms like "threat actor," "attacker," or "cybercriminal" over the ambiguous "hacker," which has positive connotations in many technical communities.
@@ -238,14 +271,14 @@ Match the urgency of your language to the actual severity of the vulnerability. 
 -   **Low Severity** — Localized or low-impact issues. Reported in Product Update emails only.
 
 | **CVSS Range** | **Internal Label** | **Default Communication Channel** |
-| — | — | — |
+| --- | --- | --- |
 | 9.0–10.0 | Critical | Dedicated customer email |
 | 7.0–8.9 | High | Dedicated customer email |
 | 4.0–6.9 | Medium | Case-by-case decision by Development, Support, and Marketing |
 | 0.1–3.9 | Low | Product update email |
 
 | **✓ Do** | **✗ Don't** |
-| — | — |
+| --- | --- |
 | "Critical: unauthenticated remote code execution" | "Extremely dangerous flaw found in popular plugin!" |
 | "Low severity: authenticated stored XSS requiring administrator role" | "Minor issue, probably nothing to worry about." |
 
@@ -265,6 +298,7 @@ When writing about a vulnerability, include these context signals so readers can
 -   **Default vs. non-default configuration** — is the vulnerable feature enabled by default?
 -   **Affected version range** — which versions are vulnerable, and how far back does it go?
 -   **Auto-update availability** — can users receive the patch automatically?
+-   **EPSS score** — the [Exploit Prediction Scoring System](https://www.first.org/epss/) probability, when available. EPSS estimates the likelihood a vulnerability will be exploited in the wild within 30 days and is increasingly reported by databases like Patchstack alongside CVSS. Include EPSS as a supplemental data point (e.g., "EPSS: 0.04%" or "EPSS: 87%") to help readers gauge real-world urgency beyond theoretical severity.
 
 ### 7.4 Writing about Core vs. Plugin vs. Theme Vulnerabilities
 
@@ -284,105 +318,139 @@ Always name the affected plugin or theme. Users cannot act on vague warnings. Ho
 
 ### 7.6 Operational Policy Boundary
 
-This style guide defines *writing standards*—how to communicate about vulnerabilities clearly, accurately, and consistently. The operational procedures for *who does what and when* during a vulnerability response are maintained separately in Section 10 (Operational Appendix). This separation ensures the style guidance remains stable even as internal workflows evolve.
+This style guide defines *writing standards*—how to communicate about vulnerabilities clearly, accurately, and consistently. The operational procedures for *who does what and when* during a vulnerability response are maintained separately in [Section 10 (Operational Appendix)](#10-operational-appendix-vulnerability-communication-workflow). This separation ensures the style guidance remains stable even as internal workflows evolve.
+
+### 7.7 Writing about Supply Chain Incidents
+
+Supply chain attacks targeting the WordPress ecosystem—compromised plugins, theme ownership transfers, dependency confusion, and hijacked developer accounts—are a growing concern. When writing about these incidents, apply specific framing:
+
+-   **Name the mechanism.** Be precise about how the compromise occurred: a plugin sale to a malicious buyer, a compromised developer account, a backdoored dependency, or a rogue commit in a build pipeline. Each has different implications for the affected user.
+
+-   **Distinguish intent from negligence.** A plugin that was deliberately backdoored after an ownership transfer is a fundamentally different event from a plugin that inadvertently included a vulnerable dependency. The writing should reflect the difference without speculating beyond known facts.
+
+-   **Provide a timeline.** State the compromise window—when the malicious code was introduced and when it was detected or removed. Users need this to assess whether their sites were exposed.
+
+-   **Describe the blast radius.** How many active installations were affected? Was the compromised version distributed through the official WordPress.org repository, or through a third-party marketplace? Were auto-updates involved?
+
+-   **Recommend specific actions.** Generic "update your plugins" advice is insufficient for supply chain incidents. Specify whether the plugin should be updated, replaced, or removed entirely—and whether affected sites need a malware scan or password reset.
 
 ## 8. Glossary of WordPress Security Terms
 
 This glossary defines security-related terms as they are used in the WordPress ecosystem. Terms are listed alphabetically. Where a term has both a general and a WordPress-specific meaning, the WordPress usage is emphasized.
 
-> **2FA / MFA** — Two-factor authentication / multi-factor authentication. A security mechanism requiring two or more verification methods (typically a password plus a time-based code from an authenticator app or hardware key) to access an account. In WordPress, 2FA is implemented through plugins or managed hosting features.
->
-> **Action-gated reauthentication** — A security mechanism that requires a user to re-verify their identity (usually via password and 2FA) specifically before performing a sensitive or destructive action, such as installing a plugin, deleting a theme, or changing user roles. Also known as "sudo mode."
->
-> **Admin (role)** — The highest default user role in a single-site WordPress installation. Administrators can install plugins, modify themes, manage users, and change site settings. On a Multisite network, the equivalent is Super Admin.
->
-> **Application password** — A feature introduced in WordPress 5.6 that generates unique, revocable passwords for REST API and XML-RPC authentication. Application passwords bypass 2FA, do not expire by default, and persist until manually revoked—making them a significant attack surface if not managed carefully.
->
-> **Argon2id** — A modern password hashing algorithm designed to resist brute-force attacks. In WordPress-related environments, bcrypt remains widely used, and Argon2id may be available depending on platform and implementation choices.
->
-> **bcrypt** — A password hashing function based on the Blowfish cipher. bcrypt is the default password hashing algorithm in WordPress core through at least version 6.7. It is mature and widely supported, though Argon2id offers stronger resistance to GPU-based attacks where available.
->
-> **Auth cookie** — The session cookie WordPress sets when a user logs in. It contains the username, an expiration timestamp, and an HMAC signature derived from the authentication keys and salts in `wp-config.php`. This is a signed (not encrypted) token that allows the user to access the Dashboard without re-entering credentials until the cookie expires or the session is terminated.
->
-> **Auto-update** — WordPress's built-in mechanism for automatically applying updates. Since version 3.7, minor (security) releases are applied automatically by default. Major version and plugin/theme auto-updates can be enabled separately.
->
-> **Brute-force attack** — An attack method that attempts to guess login credentials by systematically trying many combinations. In WordPress, this typically targets the wp-login.php form. Mitigated by rate limiting, 2FA, and strong password policies.
->
-> **Capability** — A specific permission assigned to a WordPress user role. Examples include edit_posts, manage_options, and install_plugins. Capabilities can be customized with plugins or code to implement the principle of least privilege.
->
-> **Content Security Policy (CSP)** — An HTTP response header that controls which resources (scripts, styles, images) a browser is allowed to load on a page. Effective against XSS attacks. Configured at the server or application level.
->
-> **Credential stuffing** — An automated attack that uses username/password pairs leaked from other breaches to attempt login on a target site. Effective against users who reuse passwords across services.
->
-> **Cross-Site Request Forgery (CSRF)** — An attack that tricks an authenticated user into performing an unintended action. WordPress mitigates CSRF through nonces—cryptographic tokens tied to a specific user, action, and time window.
->
-> **Cross-Site Scripting (XSS)** — A vulnerability that allows an attacker to inject malicious scripts into web pages viewed by other users. WordPress provides escaping functions (esc_html(), esc_attr(), wp_kses()) to prevent XSS.
->
-> **CVE** — Common Vulnerabilities and Exposures. A standardized identifier (e.g., CVE-2024-1234) assigned to publicly disclosed security vulnerabilities. CVE numbers are issued by authorized numbering authorities.
->
-> **CVSS** — Common Vulnerability Scoring System. A standardized framework for rating the severity of vulnerabilities on a 0–10 scale. Scores classify vulnerabilities as None (0), Low (0.1–3.9), Medium (4.0–6.9), High (7.0–8.9), or Critical (9.0–10.0).
->
-> **Dashboard** — The WordPress administrative interface, accessed via /wp-admin/. Prefer "Dashboard" over "backend" or "admin panel" in user-facing writing.
->
-> **Fail2Ban** — A server-level intrusion prevention tool that monitors log files and bans IP addresses showing malicious patterns (e.g., repeated failed login attempts). Integrates with WordPress through custom jail configurations.
->
-> **FedRAMP** — The Federal Risk and Authorization Management Program. A United States government-wide program that provides a standardized approach to security assessment, authorization, and continuous monitoring for cloud products and services. Relevant for enterprise WordPress deployments in government and highly regulated sectors.
->
-> **FUD** — Fear, uncertainty, and doubt. A rhetorical strategy that exaggerates threats to motivate action (usually purchasing a product). Avoid FUD in security writing; it erodes trust and impairs informed decision-making.
->
-> **Hardening** — The process of reducing a system's attack surface by disabling unnecessary features, restricting permissions, and applying security configurations. In WordPress, hardening includes setting constants in wp-config.php, restricting file permissions, and disabling XML-RPC.
->
-> **Infostealer** — A category of malware designed to exfiltrate sensitive data from infected devices, including passwords, session cookies, browser data, and cryptocurrency wallets. Infostealers are a rapidly growing threat vector affecting all web platforms, including WordPress.
->
-> **IoC (Indicators of Compromise)** — Observable evidence that a system has been compromised, such as unexpected file modifications, unfamiliar user accounts, anomalous outbound network traffic, or known malicious file hashes. In WordPress, common IoCs include injected PHP files in plugin directories, unauthorized admin accounts, and modified core files.
->
-> **Multisite** — A WordPress feature that allows multiple sites to be run from a single WordPress installation, sharing the same database and file system. Security considerations differ from single-site installations, particularly around user roles and network-level settings.
->
-> **Nonce** — In WordPress, a "number used once"—a cryptographic token used to verify that a request originates from a legitimate, authenticated user and is tied to a specific action. Nonces protect against CSRF attacks. Note: despite the name, WordPress nonces are not single-use; they remain valid for a time window (up to 24 hours, in two 12-hour ticks). This is a frequent source of confusion for developers and auditors.
->
-> **OWASP Top 10** — A regularly updated list of the ten most critical web application security risks, published by the Open Web Application Security Project. Used as a benchmark for evaluating and improving application security.
->
-> **Patch / Patching** — A software update that fixes a specific bug or vulnerability. In WordPress, patches are delivered through minor version releases (e.g., 6.5.1) and plugin/theme updates. "Virtual patching" refers to WAF rules that block exploitation of a known vulnerability before a code-level fix is applied.
->
-> **Phishing** — A social engineering attack that uses deceptive communications (usually email) to trick recipients into revealing credentials, installing malware, or taking other harmful actions. "Spear phishing" targets specific individuals; "whaling" targets executives.
->
-> **Plugin** — A software extension that adds functionality to WordPress. Plugins run with the same privileges as WordPress core, making them a significant component of the site's security posture. Always one word, lowercase in running text.
->
-> **PoC (Proof of Concept)** — In security, a demonstration or snippet of code that proves a vulnerability is exploitable.
->
-> **Principle of Least Privilege (PoLP)** — A security principle requiring that users and processes be granted only the minimum permissions necessary to perform their functions. In WordPress, this means limiting admin accounts, restricting file modification capabilities, and using custom roles.
->
-> **Responsible disclosure** — A practice in which a security researcher reports a vulnerability privately to the affected vendor, allowing time for a patch before public disclosure. The WordPress Security Team follows this practice for core; the WordPress Plugin Security Team handles plugin-specific vulnerability review, forced updates, and plugin closures on WordPress.org.
->
-> **REST API** — WordPress's built-in API for programmatic access to site data. Sensitive endpoints require authentication. The REST API can expose information (e.g., user enumeration via /wp-json/wp/v2/users) if not properly restricted.
->
-> **Role** — A named collection of capabilities in WordPress. Default roles include Subscriber, Contributor, Author, Editor, and Administrator. Custom roles can be created to implement granular access control.
->
-> **SBOM (Software Bill of Materials)** — A formal, machine-readable record of all the components and dependencies in a software package. SBOMs help organizations manage supply chain risk by identifying vulnerable components within themes, plugins, and core libraries.
->
-> **Session hijacking** — An attack in which a threat actor obtains a valid session cookie (e.g., through XSS, network interception, or infostealer malware) and uses it to impersonate the authenticated user. 2FA does not protect against hijacked sessions because the session is already authenticated.
->
-> **SQL injection (SQLi)** — An attack that inserts malicious SQL code into queries executed by the database. WordPress mitigates SQLi through the `$wpdb->prepare()` method, which parameterizes queries.
->
-> **Supply chain attack** — An attack that compromises software through its dependencies or distribution channels rather than targeting the software directly. In WordPress, this can occur through compromised plugins, themes, or build tools.
->
-> **Theme** — A collection of template files and stylesheets that control a WordPress site's visual presentation. Themes can introduce security vulnerabilities through insecure coding practices, particularly in custom themes.
->
-> **Threat actor** — An individual or group that attempts to exploit vulnerabilities in systems or people for malicious purposes. Preferred over "hacker" in security writing because "hacker" has positive connotations in technical communities.
->
-> **Virtual patching** — A WAF rule that blocks exploitation of a known vulnerability at the network or application level, providing protection before a code-level patch is available. Services like Patchstack and Cloudflare offer virtual patching for WordPress.
->
-> **Vulnerability** — A weakness in software, configuration, or process that could be exploited to compromise a system's security. In WordPress, vulnerabilities are categorized by type (XSS, SQLi, CSRF, etc.) and severity (CVSS score).
->
-> **WAF** — Web Application Firewall. A security layer that filters and monitors HTTP traffic between a web application and the internet. In WordPress, WAFs may operate at the server level (ModSecurity), application level (Wordfence), or network edge (Cloudflare).
->
-> **wp-config.php** — The primary WordPress configuration file, located in the site's root directory (or one level above). Contains database credentials, authentication keys, and security constants. Should be restricted to file permission 600 or 640.
->
-> **XML-RPC** — A legacy remote procedure call protocol in WordPress (xmlrpc.php). Historically used for remote publishing and pingbacks, it is a common target for brute-force amplification attacks. Recommended to disable unless specifically required.
->
-> **Zero-day** — A vulnerability that is publicly unknown and unpatched—the vendor has had "zero days" to address it. In formal writing, prefer "previously undisclosed vulnerability" or "publicly undisclosed vulnerability." Hyphenate when used as an adjective: a zero-day vulnerability.
->
-> **Zero Trust** — A security model that requires continuous verification of all users and devices, regardless of network location. No user or system is trusted by default. In WordPress, Zero Trust principles inform practices like requiring 2FA, enforcing session limits, and restricting admin access by IP or device.
+**2FA / MFA** — Two-factor authentication / multi-factor authentication. A security mechanism requiring two or more verification methods (typically a password plus a time-based code from an authenticator app or hardware key) to access an account. In WordPress, 2FA is implemented through plugins or managed hosting features.
+
+**Action-gated reauthentication** — A security mechanism that requires a user to re-verify their identity (usually via password and 2FA) specifically before performing a sensitive or destructive action, such as installing a plugin, deleting a theme, or changing user roles. Also known as "sudo mode."
+
+**Admin (role)** — The highest default user role in a single-site WordPress installation. Administrators can install plugins, modify themes, manage users, and change site settings. On a Multisite network, the equivalent is Super Admin.
+
+**Application password** — A feature introduced in WordPress 5.6 that generates unique, revocable passwords for REST API and XML-RPC authentication. Application passwords bypass 2FA, do not expire by default, and persist until manually revoked—making them a significant attack surface if not managed carefully.
+
+**Argon2id** — A modern password hashing algorithm designed to resist brute-force attacks. In WordPress-related environments, bcrypt remains widely used, and Argon2id may be available depending on platform and implementation choices.
+
+**Attack surface** — The total set of points where an attacker can attempt to enter or extract data from a system. In WordPress, the attack surface includes login forms, the REST API, XML-RPC, file upload handlers, plugin and theme code, and the hosting environment. Reducing the attack surface is a core hardening goal.
+
+**Auth cookie** — The session cookie WordPress sets when a user logs in. It contains the username, an expiration timestamp, and an HMAC signature derived from the authentication keys and salts in `wp-config.php`. This is a signed (not encrypted) token that allows the user to access the Dashboard without re-entering credentials until the cookie expires or the session is terminated.
+
+**Auto-update** — WordPress's built-in mechanism for automatically applying updates. Since version 3.7, minor (security) releases are applied automatically by default. Major version and plugin/theme auto-updates can be enabled separately.
+
+**bcrypt** — A password hashing function based on the Blowfish cipher. bcrypt has been the default password hashing algorithm in WordPress core since version 6.8 (November 2024), replacing the older phpass-based hashing. It is mature and widely supported, though Argon2id offers stronger resistance to GPU-based attacks where available.
+
+**Brute-force attack** — An attack method that attempts to guess login credentials by systematically trying many combinations. In WordPress, this typically targets the `wp-login.php` form. Mitigated by rate limiting, 2FA, and strong password policies.
+
+**Capability** — A specific permission assigned to a WordPress user role. Examples include `edit_posts`, `manage_options`, and `install_plugins`. Capabilities can be customized with plugins or code to implement the principle of least privilege.
+
+**Content Security Policy (CSP)** — An HTTP response header that controls which resources (scripts, styles, images) a browser is allowed to load on a page. Effective against XSS attacks. Configured at the server or application level.
+
+**Credential stuffing** — An automated attack that uses username/password pairs leaked from other breaches to attempt login on a target site. Effective against users who reuse passwords across services.
+
+**Cross-Site Request Forgery (CSRF)** — An attack that tricks an authenticated user into performing an unintended action. WordPress mitigates CSRF through nonces—cryptographic tokens tied to a specific user, action, and time window.
+
+**Cross-Site Scripting (XSS)** — A vulnerability that allows an attacker to inject malicious scripts into web pages viewed by other users. WordPress provides escaping functions (`esc_html()`, `esc_attr()`, `wp_kses()`) to prevent XSS.
+
+**CVE** — Common Vulnerabilities and Exposures. A standardized identifier (e.g., `CVE-2024-1234`) assigned to publicly disclosed security vulnerabilities. CVE numbers are issued by authorized numbering authorities.
+
+**CVSS** — Common Vulnerability Scoring System. A standardized framework for rating the severity of vulnerabilities on a 0–10 scale. Scores classify vulnerabilities as None (0), Low (0.1–3.9), Medium (4.0–6.9), High (7.0–8.9), or Critical (9.0–10.0).
+
+**Dashboard** — The WordPress administrative interface, accessed via `/wp-admin/`. Prefer "Dashboard" over "backend" or "admin panel" in user-facing writing.
+
+**Dependency confusion** — A supply chain attack in which a malicious package with the same name as a private dependency is published to a public registry, causing build tools to install the malicious version. Relevant to WordPress sites that use Composer or npm for dependency management.
+
+**EPSS** — Exploit Prediction Scoring System. A model that estimates the probability (0–100%) that a vulnerability will be exploited in the wild within 30 days of scoring. Published by FIRST alongside CVSS, EPSS helps prioritize remediation by real-world exploitability rather than theoretical severity alone.
+
+**Fail2Ban** — A server-level intrusion prevention tool that monitors log files and bans IP addresses showing malicious patterns (e.g., repeated failed login attempts). Integrates with WordPress through custom jail configurations.
+
+**FedRAMP** — The Federal Risk and Authorization Management Program. A United States government-wide program that provides a standardized approach to security assessment, authorization, and continuous monitoring for cloud products and services. Relevant for enterprise WordPress deployments in government and highly regulated sectors.
+
+**File integrity monitoring** — A security practice that detects unauthorized changes to files by comparing their current state (checksums or hashes) against a known-good baseline. In WordPress, `wp-cli checksum` verifies core files against official hashes, and security plugins extend this to themes, plugins, and uploads.
+
+**FUD** — Fear, uncertainty, and doubt. A rhetorical strategy that exaggerates threats to motivate action (usually purchasing a product). Avoid FUD in security writing; it erodes trust and impairs informed decision-making.
+
+**Hardening** — The process of reducing a system's attack surface by disabling unnecessary features, restricting permissions, and applying security configurations. In WordPress, hardening includes setting constants in `wp-config.php`, restricting file permissions, and disabling XML-RPC.
+
+**HSTS** — HTTP Strict Transport Security. An HTTP response header (`Strict-Transport-Security`) that instructs browsers to only connect to a site over HTTPS for a specified period. Prevents protocol downgrade attacks and cookie hijacking. Should be deployed with care—once a browser receives an HSTS header, it will refuse non-HTTPS connections until the `max-age` expires.
+
+**Infostealer** — A category of malware designed to exfiltrate sensitive data from infected devices, including passwords, session cookies, browser data, and cryptocurrency wallets. Infostealers are a rapidly growing threat vector affecting all web platforms, including WordPress.
+
+**IoC (Indicators of Compromise)** — Observable evidence that a system has been compromised, such as unexpected file modifications, unfamiliar user accounts, anomalous outbound network traffic, or known malicious file hashes. In WordPress, common IoCs include injected PHP files in plugin directories, unauthorized admin accounts, and modified core files.
+
+**Malware** — Malicious software designed to disrupt, damage, or gain unauthorized access to a system. In WordPress, malware commonly takes the form of injected PHP backdoors, JavaScript redirects, SEO spam injections, cryptominers, and phishing pages hosted in the uploads directory. See also: infostealer.
+
+**Multisite** — A WordPress feature that allows multiple sites to be run from a single WordPress installation, sharing the same database and file system. Security considerations differ from single-site installations, particularly around user roles and network-level settings.
+
+**Nonce** — In WordPress, a "number used once"—a cryptographic token used to verify that a request originates from a legitimate, authenticated user and is tied to a specific action. Nonces protect against CSRF attacks. Note: despite the name, WordPress nonces are not single-use; they remain valid for a time window (up to 24 hours, in two 12-hour ticks). This is a frequent source of confusion for developers and auditors.
+
+**OWASP Top 10** — A regularly updated list of the ten most critical web application security risks, published by the Open Web Application Security Project. Used as a benchmark for evaluating and improving application security.
+
+**Passkey / WebAuthn** — A passwordless authentication standard based on public-key cryptography. The user's device generates a cryptographic key pair; the private key never leaves the device, and the server stores only the public key. Passkeys resist phishing, credential stuffing, and replay attacks. WordPress support is available through plugins and is expected to reach core in a future release.
+
+**Patch / Patching** — A software update that fixes a specific bug or vulnerability. In WordPress, patches are delivered through minor version releases (e.g., 6.5.1) and plugin/theme updates. "Virtual patching" refers to WAF rules that block exploitation of a known vulnerability before a code-level fix is applied.
+
+**Phishing** — A social engineering attack that uses deceptive communications (usually email) to trick recipients into revealing credentials, installing malware, or taking other harmful actions. "Spear phishing" targets specific individuals; "whaling" targets executives.
+
+**Plugin** — A software extension that adds functionality to WordPress. Plugins run with the same privileges as WordPress core, making them a significant component of the site's security posture. Always one word, lowercase in running text.
+
+**PoC (Proof of Concept)** — In security, a demonstration or snippet of code that proves a vulnerability is exploitable.
+
+**Principle of Least Privilege (PoLP)** — A security principle requiring that users and processes be granted only the minimum permissions necessary to perform their functions. In WordPress, this means limiting admin accounts, restricting file modification capabilities, and using custom roles.
+
+**Rate limiting** — A technique that restricts the number of requests a client can make to a server within a given time window. In WordPress, rate limiting is applied to login attempts (via plugins or server-level tools like Fail2Ban), REST API endpoints, and XML-RPC to mitigate brute-force and denial-of-service attacks.
+
+**Responsible disclosure** — A practice in which a security researcher reports a vulnerability privately to the affected vendor, allowing time for a patch before public disclosure. The WordPress Security Team follows this practice for core; the WordPress Plugin Security Team handles plugin-specific vulnerability review, forced updates, and plugin closures on WordPress.org.
+
+**REST API** — WordPress's built-in API for programmatic access to site data. Sensitive endpoints require authentication. The REST API can expose information (e.g., user enumeration via `/wp-json/wp/v2/users`) if not properly restricted.
+
+**Role** — A named collection of capabilities in WordPress. Default roles include Subscriber, Contributor, Author, Editor, and Administrator. Custom roles can be created to implement granular access control.
+
+**SBOM (Software Bill of Materials)** — A formal, machine-readable record of all the components and dependencies in a software package. SBOMs help organizations manage supply chain risk by identifying vulnerable components within themes, plugins, and core libraries.
+
+**Session hijacking** — An attack in which a threat actor obtains a valid session cookie (e.g., through XSS, network interception, or infostealer malware) and uses it to impersonate the authenticated user. 2FA does not protect against hijacked sessions because the session is already authenticated.
+
+**SQL injection (SQLi)** — An attack that inserts malicious SQL code into queries executed by the database. WordPress mitigates SQLi through the `$wpdb->prepare()` method, which parameterizes queries.
+
+**SSRF (Server-Side Request Forgery)** — A vulnerability that allows an attacker to cause the server to make HTTP requests to unintended destinations, potentially accessing internal services or metadata endpoints. In WordPress, SSRF can occur through unvalidated URL inputs in themes, plugins, or the HTTP API. Mitigated by validating and restricting outbound request targets.
+
+**Supply chain attack** — An attack that compromises software through its dependencies or distribution channels rather than targeting the software directly. In WordPress, this can occur through compromised plugins, themes, or build tools. See [§7.7](#77-writing-about-supply-chain-incidents) for writing guidance.
+
+**Theme** — A collection of template files and stylesheets that control a WordPress site's visual presentation. Themes can introduce security vulnerabilities through insecure coding practices, particularly in custom themes.
+
+**Threat actor** — An individual or group that attempts to exploit vulnerabilities in systems or people for malicious purposes. Preferred over "hacker" in security writing because "hacker" has positive connotations in technical communities.
+
+**TOTP** — Time-based One-Time Password. An algorithm (defined in RFC 6238) that generates a short-lived numeric code from a shared secret and the current time. TOTP is the most common 2FA method in WordPress plugins (e.g., via authenticator apps like Google Authenticator or Authy). Codes are typically valid for 30 seconds.
+
+**Virtual patching** — A WAF rule that blocks exploitation of a known vulnerability at the network or application level, providing protection before a code-level patch is available. Services like Patchstack and Cloudflare offer virtual patching for WordPress.
+
+**Vulnerability** — A weakness in software, configuration, or process that could be exploited to compromise a system's security. In WordPress, vulnerabilities are categorized by type (XSS, SQLi, CSRF, etc.) and severity (CVSS score).
+
+**WAF** — Web Application Firewall. A security layer that filters and monitors HTTP traffic between a web application and the internet. In WordPress, WAFs may operate at the server level (ModSecurity), application level (Wordfence), or network edge (Cloudflare).
+
+**wp-config.php** — The primary WordPress configuration file, located in the site's root directory (or one level above). Contains database credentials, authentication keys, and security constants. Should be restricted to file permission `600` or `640`.
+
+**XML-RPC** — A legacy remote procedure call protocol in WordPress (`xmlrpc.php`). Historically used for remote publishing and pingbacks, it is a common target for brute-force amplification attacks. Recommended to disable unless specifically required.
+
+**Zero-day** — A vulnerability that is publicly unknown and unpatched—the vendor has had "zero days" to address it. In formal writing, prefer "previously undisclosed vulnerability" or "publicly undisclosed vulnerability." Hyphenate when used as an adjective: a zero-day vulnerability.
+
+**Zero Trust** — A security model that requires continuous verification of all users and devices, regardless of network location. No user or system is trusted by default. In WordPress, Zero Trust principles inform practices like requiring 2FA, enforcing session limits, and restricting admin access by IP or device.
 
 ## 9. References and Further Reading
 
