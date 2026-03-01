@@ -3,7 +3,7 @@
 **Principles, Practices, and Terminology for Clear, Honest, and Empowering Security Communication**
 
 Dan Knauss
-February 16, 2026
+March 1, 2026
 
 ## 1. Security, Vulnerability, and Trust in Open Source
 
