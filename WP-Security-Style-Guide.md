@@ -1,4 +1,4 @@
-# A Style Guide for Writing About WordPress and Security — DRAFT
+# Writing About WordPress and Security: A Style Guide for — DRAFT
 
 **Principles, Practices, and Terminology for Clear, Honest, and Empowering Security Communication**
 
@@ -7,7 +7,7 @@ March 1, 2026
 
 ## 1. Security, Vulnerability, and Trust in Open Source
 
-We maintain a security product, but the product is not security.
+Security isn't anyone's product — even if they create, maintain, and sell a security product — but security is everyone's responsibility.
 
 As part of the Open Web, WordPress is a commons, and so is WordPress security.
 
