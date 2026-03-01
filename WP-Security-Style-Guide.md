@@ -1,4 +1,4 @@
-# Writing About WordPress and Security: A Style Guide for — DRAFT
+# Writing About WordPress and Security: A Style Guide — DRAFT
 
 **Principles, Practices, and Terminology for Clear, Honest, and Empowering Security Communication**
 
