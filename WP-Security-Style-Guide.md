@@ -1,9 +1,12 @@
-# Writing About WordPress and Security: A Style Guide — DRAFT
+# Writing About WordPress and Security: A Style Guide
 
 **Principles, Practices, and Terminology for Clear, Honest, and Empowering Security Communication**
 
-Dan Knauss
+[Dan Knauss](https://dan.knauss.ca/)
+
 March 1, 2026
+
+Version 1.0
 
 ## 1. Security, Vulnerability, and Trust in Open Source
 
