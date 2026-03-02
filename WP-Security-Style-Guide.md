@@ -1,5 +1,5 @@
 ---
-title: "Writing About Security, Vulnerability, and Open Source Software: A Style Guide for the WordPress Community"
+title: "Writing About Security, Vulnerability, and Open Source Software: A Style Guide for the WordPress Ecosystem"
 subtitle: "Principles, Practices, and Terminology for Clear, Honest, and Empowering Communication"
 author: "Dan Knauss"
 date: "March 2, 2026"
