@@ -105,6 +105,23 @@ WordPress is often deployed in environments subject to regulatory requirements (
 
 -   **Distinguish between certification and alignment.** An organization can be *certified* against a framework (e.g., SOC 2 Type II) or *aligned* with its principles without formal certification. Use the correct term.
 
+### 3.7 Context-Dependent Technical Recommendations
+
+Many security recommendations — file permissions, server configuration values, timeout thresholds, rate limits — are highly dependent on deployment context. There are few universal "right answers," but there are universally wrong ones. When writing about context-dependent topics:
+
+-   **Present principles, not prescriptions.** Explain the security objective (e.g., "restrict file access to the minimum necessary") rather than prescribing a single value (e.g., "set permissions to 600") that may be incorrect for some environments.
+
+-   **Acknowledge variability.** Different hosting environments, deployment methods, and operational requirements produce different correct configurations. A containerized deployment, a shared hosting environment, and a dedicated server each have different filesystem ownership models.
+
+-   **Identify the universally wrong choices.** While the right answer varies, some answers are always wrong (e.g., `777` permissions, `GRANT ALL PRIVILEGES` on a production database). Call these out explicitly.
+
+-   **Provide context for specific values.** When you must cite a specific value, qualify it: explain the assumptions (e.g., "assumes the web server runs as `www-data` and is the only process that needs read access"), note when alternatives are appropriate, and cross-reference the Benchmark for auditable guidance.
+
+| **✓ Do** | **✗ Don't** |
+| --- | --- |
+| "Restrict `wp-config.php` to the minimum permissions your deployment requires. Owner-read-only (`400` or `440`) is preferred when your deployment pipeline does not need write access." | "Set `wp-config.php` to `600`." |
+| "Grant only the eight specific database privileges WordPress requires (SELECT, INSERT, UPDATE, DELETE, CREATE, ALTER, INDEX, DROP)." | "Set up the database and make sure the user has access." |
+
 ## 4. Audience, Voice, and Tone
 
 ### 4.1 Know Your Audiences
@@ -354,6 +371,8 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **AI-powered tool** — A software tool that uses machine learning or AI techniques to perform tasks such as malware scanning, anomaly detection, code review, or vulnerability assessment. When writing about AI-powered tools, describe what they do concretely rather than attributing cognition or judgment to them. See §3.5.
 
+**AIDE (Advanced Intrusion Detection Environment)** — A server-level file integrity monitoring tool that builds a database of file attributes and checksums at a known-good baseline state, then detects unauthorized changes by periodic comparison. One of the server-side FIM options referenced in the Benchmark alongside OSSEC and Tripwire. See also: *file integrity monitoring*.
+
 **Anomaly detection** — A security technique that identifies unusual patterns in system behavior, file activity, network traffic, or user actions that deviate from an established baseline. In WordPress security, anomaly detection flags unauthorized file changes, suspicious login patterns, or abnormal API activity. See also: *file integrity monitoring*, *malware signature*.
 
 **Application password** — A feature introduced in WordPress 5.6 that generates unique, revocable passwords for REST API and XML-RPC authentication. By design, application passwords provide scoped credentials that do not expose the user's main login password, can be individually revoked if compromised, and are not valid for logging into the WordPress Dashboard. However, they bypass 2FA, do not expire by default, and persist until manually revoked — making them an attack surface that requires careful management in enterprise environments.
@@ -432,9 +451,9 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **File integrity monitoring** — A security practice that detects unauthorized changes to files by comparing their current state (checksums or hashes) against a known-good baseline. In WordPress, `wp-cli checksum` verifies core files against official hashes, and security plugins extend this to themes, plugins, and uploads.
 
-**FUD** — Fear, uncertainty, and doubt. A rhetorical strategy that exaggerates threats to motivate action (usually purchasing a product). Avoid FUD in security writing; it erodes trust and impairs informed decision-making.
-
 **FORCE_SSL_ADMIN** — A WordPress constant (`define( 'FORCE_SSL_ADMIN', true )`) set in `wp-config.php` that forces all Dashboard and login pages to use HTTPS. A baseline hardening measure that ensures authentication cookies are only transmitted over encrypted connections. Note: `FORCE_SSL_LOGIN` is deprecated and should not be used. See also: *HSTS*, *TLS*.
+
+**FUD** — Fear, uncertainty, and doubt. A rhetorical strategy that exaggerates threats to motivate action (usually purchasing a product). Avoid FUD in security writing; it erodes trust and impairs informed decision-making.
 
 **GDPR** — General Data Protection Regulation (EU). A European Union regulation governing the processing of personal data of individuals in the EU/EEA. It sets requirements for lawful processing, transparency, data subject rights, breach notification, and controller/processor responsibilities.
 
@@ -460,15 +479,15 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **Local file inclusion (LFI) / Remote file inclusion (RFI)** — File inclusion vulnerabilities in which insecure use of PHP's `include()` or `require()` with user-supplied input allows an attacker to load and execute a local server file (LFI) or a remote attacker-controlled file (RFI). Exploitation can lead to information disclosure or arbitrary code execution. A recurring vulnerability class in WordPress plugins and themes.
 
-**Malware** — Malicious software designed to disrupt, damage, or gain unauthorized access to a system. In WordPress, malware commonly takes the form of injected PHP backdoors, JavaScript redirects, SEO spam injections, cryptominers, and phishing pages hosted in the uploads directory. See also: infostealer.
+**Malware** — Malicious software designed to disrupt, damage, or gain unauthorized access to a system. In WordPress, malware commonly takes the form of injected PHP backdoors, JavaScript redirects, SEO spam injections, cryptominers, and phishing pages hosted in the uploads directory. See also: *Infostealer*.
 
 **Malware signature** — A unique byte pattern, hash, or string used to identify a known piece of malicious software. Signature-based detection matches files or code against a database of known malicious patterns. WordPress security scanners use malware signatures to detect injected backdoors, JavaScript redirects, and other threat patterns. See also: *malware*, *file integrity monitoring*, *anomaly detection*.
 
 **ModSecurity** — An open-source web application firewall (WAF) module for Apache, Nginx, and IIS that inspects and filters HTTP requests based on configurable rule sets. Represents the server-level WAF tier in WordPress deployments. See also: *WAF*, *virtual patching*.
 
-**Multisite** — A WordPress feature that allows multiple sites to be run from a single WordPress installation, sharing the same database and file system. Security considerations differ from single-site installations, particularly around user roles and network-level settings.
-
 **mu-plugin (must-use plugin)** — A WordPress plugin placed in the `wp-content/mu-plugins/` directory that loads automatically on every page request and cannot be deactivated through the Dashboard. Must-use plugins are commonly used for security hardening (e.g., disabling XML-RPC, restricting REST API endpoints, enforcing security headers) because they cannot be inadvertently disabled by administrators. They do not receive automatic updates and must be maintained manually or through a deployment pipeline. See also: *plugin*.
+
+**Multisite** — A WordPress feature that allows multiple sites to be run from a single WordPress installation, sharing the same database and file system. Security considerations differ from single-site installations, particularly around user roles and network-level settings.
 
 **NIST SP 800-53** — A NIST publication (*Security and Privacy Controls for Information Systems and Organizations*) providing a comprehensive catalog of security and privacy controls. Individual controls are cited as identifiers such as `IA-2(1)` (Identification and Authentication — Multi-Factor Authentication for Privileged Accounts). Referenced in compliance discussions for enterprise WordPress deployments.
 
@@ -490,6 +509,8 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **Phishing** — A social engineering attack that uses deceptive communications (usually email) to trick recipients into revealing credentials, installing malware, or taking other harmful actions. "Spear phishing" targets specific individuals; "whaling" targets executives.
 
+**PHP-FPM (FastCGI Process Manager)** — The PHP process manager used in LEMP/LAMP stacks that manages PHP worker processes handling WordPress page requests via FastCGI. The recommended PHP execution mode for production WordPress deployments, providing process isolation, per-pool configuration, and better resource management than alternatives such as mod_php.
+
 **phpass** — A portable PHP password hashing framework that was the default password hashing method in WordPress prior to version 6.8. Based on a modified MD5 scheme with stretching, phpass is considered weaker than modern alternatives. WordPress 6.8 (April 2025) replaced phpass with bcrypt as the default. See also: *bcrypt*.
 
 **Plugin** — A software extension that adds functionality to WordPress. Plugins run with the same privileges as WordPress core, making them a significant component of the site's security posture. Always one word, lowercase in running text.
@@ -505,6 +526,8 @@ This glossary defines security-related terms as they are used in the WordPress e
 **Privilege escalation** — An attack or vulnerability that allows a user to gain permissions beyond their assigned level. *Vertical* escalation raises the privilege level (e.g., Subscriber to Administrator); *horizontal* escalation allows access to another user's account at the same privilege level. A frequent vulnerability class in WordPress plugins that mishandle role or capability checks. See also: *role*, *capability*, *principle of least privilege*.
 
 **Prompt injection** — An attack that targets AI tools by crafting input designed to override or manipulate the tool's instructions, causing it to perform unintended actions or leak sensitive information. Relevant to WordPress deployments that use AI tools to process user-generated or external content. See §3.5.
+
+**Ransomware** — A category of malware that encrypts a victim's files, databases, or systems and demands payment for the decryption key. WordPress sites may serve as initial access vectors for ransomware deployment against broader organizational infrastructure. Backup integrity, tested recovery procedures, and incident response capabilities are the primary defenses. The Verizon DBIR (2025) found ransomware present in 44% of breaches. See also: *malware*, *incident response*, *resilience*.
 
 **Rate limiting** — A technique that restricts the number of requests a client can make to a server within a given time window. In WordPress, rate limiting is applied to login attempts (via plugins or server-level tools like Fail2Ban), REST API endpoints, and XML-RPC to mitigate brute-force and denial-of-service attacks.
 
@@ -526,13 +549,19 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **SHA-384** — A cryptographic hash function in the SHA-2 family producing a 384-bit digest. WordPress uses SHA-384 to pre-hash passwords before passing them to bcrypt, working around bcrypt's 72-byte input limit so that long passwords receive full protection. See also: *bcrypt*, *BLAKE2b*.
 
+**SIEM (Security Information and Event Management)** — A centralized platform that aggregates, correlates, and alerts on security event data from multiple sources — including WordPress audit logs, web server logs, and WAF events. Commonly used in enterprise WordPress deployments for compliance monitoring and incident detection. See also: *audit logging*, *incident response*.
+
 **Shadow AI** — The unsanctioned use of AI tools (chatbots, code assistants, content generators) by employees without organizational approval or oversight. Shadow AI risks include leaking sensitive data to third-party AI providers and introducing unreviewed AI-generated code or content. IBM's Cost of a Data Breach Report (2025) found shadow AI incidents added $200,000 to average breach costs ($670,000 for organizations with high shadow AI prevalence) and that 63% of organizations lack AI governance policies.
 
 **Session hijacking** — An attack in which a threat actor obtains a valid session cookie (e.g., through XSS, network interception, or infostealer malware) and uses it to impersonate the authenticated user. 2FA does not protect against hijacked sessions because the session is already authenticated.
 
+**SIM-swapping** — A social engineering attack in which a threat actor convinces a mobile carrier to transfer a victim's phone number to an attacker-controlled SIM card, enabling interception of SMS one-time codes and bypassing SMS-based 2FA. The primary reason SMS-based 2FA is not recommended for WordPress administrator accounts. See also: *TOTP*, *Passkey / WebAuthn*.
+
 **Severity rating** — A classification of a vulnerability's potential impact and exploitability. In WordPress security writing, severity ratings are derived from the CVSS score (Critical, High, Medium, Low) or equivalent classifications used by Patchstack or the WordPress plugin repository. Always cite the rating framework and version when referencing a score (e.g., "CVSS 3.1: 8.8"). See §7.2, *CVSS*, *EPSS*.
 
 **SOC 2** — System and Organization Controls 2. An assurance framework for evaluating an organization's controls related to the AICPA Trust Services Criteria: Security, Availability, Processing Integrity, Confidentiality, and Privacy. SOC 2 results are delivered as an attestation report (commonly Type I or Type II) covering a defined system scope and time period.
+
+**Snuffleupagus** — An open-source PHP security extension that provides hardening controls — including safe alternatives for `eval()`, enforced type checking, and cookie protection — that PHP's `disable_functions` directive cannot achieve. Referenced as a Level 2 hardening option in the Benchmark for high-security WordPress environments.
 
 **Sodium** — The PHP `sodium` extension (libsodium), a modern cryptographic library providing authenticated encryption, key derivation, and hashing. WordPress uses Sodium (since version 5.2) for cryptographic operations, including BLAKE2b hashing of application passwords and security tokens, and Argon2id password hashing when enabled. See also: *BLAKE2b*, *Argon2id*.
 
@@ -558,6 +587,8 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **Transient** — A WordPress caching mechanism that stores temporary data in the database (or in the persistent object cache, when available) with an optional expiration time. In WordPress operations, expired transients are a common source of database bloat. WP-CLI provides `wp transient delete --expired` for cleanup. See also: *object cache*.
 
+**UFW (Uncomplicated Firewall)** — The host-based firewall management tool for Ubuntu/Debian Linux servers, used to restrict inbound network traffic to WordPress production servers (typically allowing only ports 80, 443, and SSH). Provides a simplified interface to `iptables`/`nftables` rules.
+
 **User enumeration** — A technique used to discover valid usernames on a WordPress site, exploiting the REST API endpoint `/wp-json/wp/v2/users`, differential login error messages, or the `?author=N` URL parameter. Mitigated by restricting the REST API user endpoint, returning generic login errors, and disabling author archives.
 
 **Virtual patching** — A WAF rule that blocks exploitation of a known vulnerability at the network or application level, providing protection before a code-level patch is available. Services like Patchstack and Cloudflare offer virtual patching for WordPress.
@@ -570,21 +601,21 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **Wordfence** — A widely used WordPress security plugin and threat intelligence service offering a web application firewall (WAF), malware scanner, login security, and a vulnerability database. In security writing, Wordfence is an example of an application-level WAF. See also: *WAF*, *virtual patching*.
 
-**wp-admin** — The URL path and directory for the WordPress administrative interface (e.g., `https://example.com/wp-admin/`). Always written in monospace when referring to the path. Some hardening configurations restrict access to this path by IP address. See also: *Dashboard*, `wp-login.php`.
+**wp-admin** — The URL path and directory for the WordPress administrative interface (e.g., `https://example.com/wp-admin/`). Always written in monospace when referring to the path. Some hardening configurations restrict access to this path by IP address. See also: *Dashboard*, *wp-login.php*.
 
-**wp-config.php** — The primary WordPress configuration file, located in the site's root directory (or one level above). Contains database credentials, authentication keys, and security constants. Should be restricted to file permission `600` or `640`.
+**wp-config.php** — The primary WordPress configuration file, located in the site's root directory (or one level above). Contains database credentials, authentication keys, and security constants. File permissions should be restricted to the minimum the deployment requires — typically owner-read-only (`400` or `440`) as the preferred steady state, with `600` or `640` used only when deployment automation requires write access. See §3.7 for guidance on writing about context-dependent configurations.
 
 **WP-CLI** — The official command-line interface for WordPress. WP-CLI allows administrators to manage WordPress installations without a web browser — performing tasks such as updating plugins, managing users, running database operations, and verifying file integrity (`wp checksum core`). Always written as "WP-CLI" (hyphenated, all caps). See also: *wp-admin*.
 
 **WP-Cron** — WordPress's built-in task scheduling system, which triggers scheduled events (such as publishing scheduled posts, checking for updates, and running cleanup tasks) on page load rather than at fixed intervals. Because WP-Cron depends on site traffic, it may fire late on low-traffic sites or cause performance issues on high-traffic sites. The recommended hardening approach is to disable WP-Cron (`define( 'DISABLE_WP_CRON', true )` in `wp-config.php`) and replace it with a system-level cron job. Without the constant, a system cron runs in addition to page-load triggers rather than replacing them. See also: *wp-config.php*.
 
-**wp-login.php** — The WordPress login form file and URL endpoint (e.g., `https://example.com/wp-login.php`). A frequent target for brute-force attacks. Mitigated by rate limiting, 2FA, CAPTCHA, and IP allowlisting. Always written in monospace. See also: *brute-force attack*, `wp-admin`.
+**wp-login.php** — The WordPress login form file and URL endpoint (e.g., `https://example.com/wp-login.php`). A frequent target for brute-force attacks. Mitigated by rate limiting, 2FA, CAPTCHA, and IP allowlisting. Always written in monospace. See also: *brute-force attack*, *wp-admin*.
 
 **xmlrpc.php** — The file implementing the XML-RPC interface in WordPress, located at the site root. A frequent target for brute-force amplification attacks (the `system.multicall` method allows batching multiple login attempts per request). Modern WordPress configurations disable this endpoint at the web server level or via a must-use plugin (`add_filter( 'xmlrpc_enabled', '__return_false' )`). Note: `XMLRPC_REQUEST` is a read-only internal constant that WordPress sets during XML-RPC processing — it cannot be used in `wp-config.php` to disable the feature. Always written in monospace. See also: *XML-RPC*, *XXE*.
 
 **XML-RPC** — A legacy remote procedure call protocol in WordPress (`xmlrpc.php`). Historically used for remote publishing and pingbacks, it is a common target for brute-force amplification attacks. WordPress core mitigates XXE attacks by disabling custom XML entity loading in the XML-RPC handler. Recommended to disable the endpoint entirely unless specifically required. See also: *XXE*.
 
-**XXE (XML eXternal Entity)** — An attack against XML parsers that exploits external entity declarations to read local files, perform server-side request forgery, or cause denial of service through entity expansion ("billion laughs"). WordPress core mitigates XXE by disabling the loading of custom XML entities in its XML-RPC handler. Disabling XML-RPC entirely provides defense in depth. See also: *XML-RPC*, `xmlrpc.php`.
+**XXE (XML eXternal Entity)** — An attack against XML parsers that exploits external entity declarations to read local files, perform server-side request forgery, or cause denial of service through entity expansion ("billion laughs"). WordPress core mitigates XXE by disabling the loading of custom XML entities in its XML-RPC handler. Disabling XML-RPC entirely provides defense in depth. See also: *XML-RPC*, *xmlrpc.php*.
 
 **Zero-day** — A vulnerability that is publicly unknown and unpatched—the vendor has had "zero days" to address it. In formal writing, prefer "previously undisclosed vulnerability" or "publicly undisclosed vulnerability." Hyphenate when used as an adjective: a zero-day vulnerability.
 
@@ -632,7 +663,7 @@ Plugin/Theme vulnerabilities must always be communicated to customers. To ensure
 
 -   Internal WordPress Security White Paper — maintain this reference in your shared document repository (avoid local absolute file paths).
 
--   [WordPress Security White Paper (developer.wordpress.org)](https://developer.wordpress.org/apis/security/)
+-   [WordPress Security White Paper](https://wordpress.org/about/security/) ([source](https://github.com/WordPress/Security-White-Paper))
 
 -   [Hardening WordPress — Advanced Administration Handbook](https://developer.wordpress.org/advanced-administration/security/hardening/)
 
@@ -647,7 +678,7 @@ Plugin/Theme vulnerabilities must always be communicated to customers. To ensure
 -   **[WordPress Security Architecture and Hardening Guide](https://github.com/dknauss/wp-security-hardening-guide)** — Enterprise-focused security architecture and hardening guide covering threat landscape, OWASP Top 10 coverage, server hardening, authentication, supply chain, incident response, and AI security.
 -   **[WordPress Security Benchmark](https://github.com/dknauss/wp-security-benchmark)** — Prescriptive, auditable hardening controls for the full WordPress stack. Use for compliance verification and configuration audits.
 -   **[WordPress Operations Runbook](https://github.com/dknauss/wordpress-runbook-template)** — Operational procedures template for WordPress sysadmins and SREs, covering deployment, maintenance, backup, incident response, and disaster recovery.
--   **WordPress Security White Paper (WordPress.org, September 2025)** — The official upstream document describing WordPress core security architecture, maintained at [developer.wordpress.org](https://developer.wordpress.org/apis/security/).
+-   **WordPress Security White Paper (WordPress.org, September 2025)** — The official upstream document describing WordPress core security architecture, maintained at [wordpress.org/about/security/](https://wordpress.org/about/security/) ([source repository](https://github.com/WordPress/Security-White-Paper)).
 
 ## License and Attribution
 
