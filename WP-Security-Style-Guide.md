@@ -624,6 +624,7 @@ Plugin/Theme vulnerabilities must always be communicated to customers. To ensure
 
 -   **[WordPress Security Architecture and Hardening Guide](https://github.com/dknauss/wp-security-hardening-guide)** — Enterprise-focused security architecture and hardening guide covering threat landscape, OWASP Top 10 coverage, server hardening, authentication, supply chain, incident response, and AI security.
 -   **[WordPress Security Benchmark](https://github.com/dknauss/wp-security-benchmark)** — Prescriptive, auditable hardening controls for the full WordPress stack. Use for compliance verification and configuration audits.
+-   **[WordPress Operations Runbook](https://github.com/dknauss/wordpress-runbook-template)** — Operational procedures template for WordPress sysadmins and SREs, covering deployment, maintenance, backup, incident response, and disaster recovery.
 -   **WordPress Security White Paper (WordPress.org, September 2025)** — The official upstream document describing WordPress core security architecture, maintained at [developer.wordpress.org](https://developer.wordpress.org/apis/security/).
 
 ## License and Attribution
