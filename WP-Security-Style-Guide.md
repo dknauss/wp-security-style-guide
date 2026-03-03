@@ -392,6 +392,8 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **Content Security Policy (CSP)** — An HTTP response header that controls which resources (scripts, styles, images) a browser is allowed to load on a page. Effective against XSS attacks. Configured at the server or application level.
 
+**CORS (Cross-Origin Resource Sharing)** — A browser mechanism that controls which external origins may access resources on a web server via JavaScript. In WordPress, CORS is relevant to REST API security: sites serving API responses to specific external origins (e.g., a decoupled front-end on a different domain) should configure CORS headers explicitly rather than using a wildcard (`*`). See also: *REST API*.
+
 **Credential stuffing** — An automated attack that uses username/password pairs leaked from other breaches to attempt login on a target site. Effective against users who reuse passwords across services.
 
 **Cross-Site Request Forgery (CSRF)** — An attack that tricks an authenticated user into performing an unintended action. WordPress mitigates CSRF through nonces—cryptographic tokens tied to a specific user, action, and time window.
@@ -556,9 +558,11 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **wp-login.php** — The WordPress login form file and URL endpoint (e.g., `https://example.com/wp-login.php`). A frequent target for brute-force attacks. Mitigated by rate limiting, 2FA, CAPTCHA, and IP allowlisting. Always written in monospace. See also: *brute-force attack*, `wp-admin`.
 
-**xmlrpc.php** — The file implementing the XML-RPC interface in WordPress, located at the site root. A frequent target for brute-force amplification attacks (the `system.multicall` method allows batching multiple login attempts per request). Modern WordPress configurations typically disable this endpoint unless specifically required. Always written in monospace. See also: *XML-RPC*.
+**xmlrpc.php** — The file implementing the XML-RPC interface in WordPress, located at the site root. A frequent target for brute-force amplification attacks (the `system.multicall` method allows batching multiple login attempts per request). Modern WordPress configurations disable this endpoint at the web server level or via a must-use plugin (`add_filter( 'xmlrpc_enabled', '__return_false' )`). Note: `XMLRPC_REQUEST` is a read-only internal constant that WordPress sets during XML-RPC processing — it cannot be used in `wp-config.php` to disable the feature. Always written in monospace. See also: *XML-RPC*, *XXE*.
 
-**XML-RPC** — A legacy remote procedure call protocol in WordPress (`xmlrpc.php`). Historically used for remote publishing and pingbacks, it is a common target for brute-force amplification attacks. Recommended to disable unless specifically required.
+**XML-RPC** — A legacy remote procedure call protocol in WordPress (`xmlrpc.php`). Historically used for remote publishing and pingbacks, it is a common target for brute-force amplification attacks. WordPress core mitigates XXE attacks by disabling custom XML entity loading in the XML-RPC handler. Recommended to disable the endpoint entirely unless specifically required. See also: *XXE*.
+
+**XXE (XML eXternal Entity)** — An attack against XML parsers that exploits external entity declarations to read local files, perform server-side request forgery, or cause denial of service through entity expansion ("billion laughs"). WordPress core mitigates XXE by disabling the loading of custom XML entities in its XML-RPC handler. Disabling XML-RPC entirely provides defense in depth. See also: *XML-RPC*, `xmlrpc.php`.
 
 **Zero-day** — A vulnerability that is publicly unknown and unpatched—the vendor has had "zero days" to address it. In formal writing, prefer "previously undisclosed vulnerability" or "publicly undisclosed vulnerability." Hyphenate when used as an adjective: a zero-day vulnerability.
 
