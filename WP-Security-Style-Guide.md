@@ -360,7 +360,7 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **Arbitrary file upload** — A vulnerability that allows an attacker to upload files of unrestricted types, potentially including executable PHP scripts. Exploitation can lead to remote code execution. WordPress restricts allowed MIME types in the media uploader, but insecure custom upload handlers in plugins and themes are a common vulnerability class. See also: *remote code execution (RCE)*.
 
-**Argon2id** — A modern password hashing algorithm designed to resist brute-force attacks. In WordPress, bcrypt is the default (since 6.8), and Argon2id can be enabled via the `wp_hash_password` core filter on servers with the required PHP extensions (sodium or argon2). Argon2id offers stronger resistance to GPU-accelerated brute-force attacks.
+**Argon2id** — A modern password hashing algorithm designed to resist brute-force attacks. In WordPress, bcrypt is the default (since 6.8), and Argon2id can be enabled via the `wp_hash_password_algorithm` filter on servers with the required PHP extensions (sodium or argon2). Argon2id offers stronger resistance to GPU-accelerated brute-force attacks.
 
 **Attack surface** — The total set of points where an attacker can attempt to enter or extract data from a system. In WordPress, the attack surface includes login forms, the REST API, XML-RPC, file upload handlers, plugin and theme code, and the hosting environment. Reducing the attack surface is a core hardening goal.
 
