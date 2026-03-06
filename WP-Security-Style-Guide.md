@@ -381,7 +381,9 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **Argon2id** — A modern password hashing algorithm designed to resist brute-force attacks. In WordPress, bcrypt is the default (since 6.8), and Argon2id can be enabled via the `wp_hash_password_algorithm` filter on servers with the required PHP extensions (sodium or argon2). Argon2id offers stronger resistance to GPU-accelerated brute-force attacks.
 
-**Attack surface** — The total set of points where an attacker can attempt to enter or extract data from a system. In WordPress, the attack surface includes login forms, the REST API, XML-RPC, file upload handlers, plugin and theme code, and the hosting environment. Reducing the attack surface is a core hardening goal.
+**Attack surface** — The total set of points where an attacker can attempt to enter or extract data from a system. In WordPress, the attack surface includes login forms, all APIs, file upload handlers, plugin and theme code, and the hosting environment. Reducing the attack surface is a core hardening goal.
+
+**Audit logging** — The systematic, chronological documentation of security-relevant events, actions, and changes within a software application, system, or network. It acts as a "digital security camera," providing a detailed, tamper-evident record (or [audit trail](https://en.wikipedia.org/wiki/Audit_trail)) that answers the critical questions of who did what, when, and where.
 
 **Auth cookie** — The session cookie WordPress sets when a user logs in. It contains the username, an expiration timestamp, and an HMAC signature derived from the authentication keys and salts in `wp-config.php`. This is a signed (not encrypted) token that allows the user to access the Dashboard without re-entering credentials until the cookie expires or the session is terminated.
 
