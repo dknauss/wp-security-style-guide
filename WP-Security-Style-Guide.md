@@ -339,7 +339,7 @@ Always name the affected plugin or theme. Users cannot act on vague warnings. Ho
 
 This style guide defines *writing standards*—how to communicate about vulnerabilities clearly, accurately, and consistently. The operational procedures for *who does what and when* during a vulnerability response are maintained separately in [§9 (Operational Appendix)](#operational-appendix-vulnerability-communication-workflow-internal). This separation ensures the style guidance remains stable even as internal workflows evolve.
 
-### 7.7 Writing about Supply Chain Incidents
+### 7.7 Writing about Supply Chain Incidents {#writing-about-supply-chain-incidents}
 
 Supply chain attacks targeting the WordPress ecosystem—compromised plugins, theme ownership transfers, dependency confusion, and hijacked developer accounts—are a growing concern. When writing about these incidents, apply specific framing:
 
@@ -353,7 +353,7 @@ Supply chain attacks targeting the WordPress ecosystem—compromised plugins, th
 
 -   **Recommend specific actions.** Generic "update your plugins" advice is insufficient for supply chain incidents. Specify whether the plugin should be updated, replaced, or removed entirely—and whether affected sites need a malware scan or password reset.
 
-## 8. Glossary of WordPress Security Terms
+## 8. Glossary of WordPress Security Terms {#glossary-of-wordpress-security-terms}
 
 This glossary defines security-related terms as they are used in the WordPress ecosystem. Terms are listed alphabetically. Where a term has both a general and a WordPress-specific meaning, the WordPress usage is emphasized.
 
@@ -623,7 +623,7 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **Zero Trust** — A security model that requires continuous verification of all users and devices, regardless of network location. No user or system is trusted by default. In WordPress, Zero Trust principles inform practices like requiring 2FA, enforcing session limits, and restricting admin access by IP or device.
 
-## 9. Operational Appendix: Vulnerability Communication Workflow (Internal)
+## 9. Operational Appendix: Vulnerability Communication Workflow (Internal) {#operational-appendix-vulnerability-communication-workflow-internal}
 
 Plugin/Theme vulnerabilities must always be communicated to customers. To ensure accuracy and consistency, Development provides Customer Success and Marketing with the following details before any public communication:
 
