@@ -188,7 +188,7 @@ Use inclusive, contemporary language. Some traditional security terminology carr
 | brute-force attack / credential stuffing attack | brute-force hacking |
 | threat actor | hacker (when meaning attacker) |
 
-Note: "brute-force attack" and "credential stuffing attack" are distinct categories. Use whichever term accurately describes the attack being discussed. See the [glossary](#glossary-of-wordpress-security-terms) for definitions.
+Note: "brute-force attack" and "credential stuffing attack" are distinct categories. Use whichever term accurately describes the attack being discussed. See the glossary in Section 8 for definitions.
 
 
 When referring to people who exploit systems maliciously, prefer specific terms like "threat actor," "attacker," or "cybercriminal" over the ambiguous "hacker," which has positive connotations in many technical communities.
@@ -337,7 +337,7 @@ Always name the affected plugin or theme. Users cannot act on vague warnings. Ho
 
 ### 7.6 Operational Policy Boundary
 
-This style guide defines *writing standards*—how to communicate about vulnerabilities clearly, accurately, and consistently. The operational procedures for *who does what and when* during a vulnerability response are maintained separately in [§9 (Operational Appendix)](#operational-appendix-vulnerability-communication-workflow-internal). This separation ensures the style guidance remains stable even as internal workflows evolve.
+This style guide defines *writing standards*—how to communicate about vulnerabilities clearly, accurately, and consistently. The operational procedures for *who does what and when* during a vulnerability response are maintained separately in §9 (Operational Appendix). This separation ensures the style guidance remains stable even as internal workflows evolve.
 
 ### 7.7 Writing about Supply Chain Incidents {#writing-about-supply-chain-incidents}
 
