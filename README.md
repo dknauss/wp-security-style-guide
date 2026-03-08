@@ -23,6 +23,15 @@ This repository contains a style guide designed for communicators, developers, a
 - **[Vulnerability Communication](WP-Security-Style-Guide.md#7-writing-about-vulnerabilities)**: Standards for describing security flaws, severity levels (CVSS/EPSS), and remediation.
 - **[Glossary](WP-Security-Style-Guide.md#8-glossary-of-wordpress-security-terms)**: A detailed reference for security terms used in the WordPress context.
 
+## Project Structure
+
+- **[WP-Security-Style-Guide.md](WP-Security-Style-Guide.md)**: Canonical source Markdown for editorial revisions.
+- **[WP-Security-Style-Guide.docx](WP-Security-Style-Guide.docx)**: A Microsoft Word `.docx` intermediary generated from Markdown and used as the template source for final publication formats.
+- **[WP-Security-Style-Guide.epub](WP-Security-Style-Guide.epub)**: The EPUB version generated from the `.docx` intermediary.
+- **[WP-Security-Style-Guide.pdf](WP-Security-Style-Guide.pdf)**: The PDF version generated from the `.docx` intermediary.
+
+Build pipeline: `WP-Security-Style-Guide.md` -> `WP-Security-Style-Guide.docx` -> `WP-Security-Style-Guide.pdf` and `WP-Security-Style-Guide.epub`.
+
 ## Related Documents
 
 This style guide is one of four complementary documents covering WordPress security from different angles:
