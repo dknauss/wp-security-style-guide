@@ -188,7 +188,7 @@ Use inclusive, contemporary language. Some traditional security terminology carr
 | brute-force attack / credential stuffing attack | brute-force hacking |
 | threat actor | hacker (when meaning attacker) |
 
-Note: "brute-force attack" and "credential stuffing attack" are distinct categories. Use whichever term accurately describes the attack being discussed. See the [glossary](#8-glossary-of-wordpress-security-terms) for definitions.
+Note: "brute-force attack" and "credential stuffing attack" are distinct categories. Use whichever term accurately describes the attack being discussed. See the [glossary](#glossary-of-wordpress-security-terms) for definitions.
 
 
 When referring to people who exploit systems maliciously, prefer specific terms like "threat actor," "attacker," or "cybercriminal" over the ambiguous "hacker," which has positive connotations in many technical communities.
@@ -337,7 +337,7 @@ Always name the affected plugin or theme. Users cannot act on vague warnings. Ho
 
 ### 7.6 Operational Policy Boundary
 
-This style guide defines *writing standards*—how to communicate about vulnerabilities clearly, accurately, and consistently. The operational procedures for *who does what and when* during a vulnerability response are maintained separately in [§9 (Operational Appendix)](#9-operational-appendix-vulnerability-communication-workflow-internal). This separation ensures the style guidance remains stable even as internal workflows evolve.
+This style guide defines *writing standards*—how to communicate about vulnerabilities clearly, accurately, and consistently. The operational procedures for *who does what and when* during a vulnerability response are maintained separately in [§9 (Operational Appendix)](#operational-appendix-vulnerability-communication-workflow-internal). This separation ensures the style guidance remains stable even as internal workflows evolve.
 
 ### 7.7 Writing about Supply Chain Incidents
 
@@ -573,7 +573,7 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **Stored XSS** — A type of XSS vulnerability in which malicious script is saved to the server (e.g., in a database comment, post content, or user profile field) and executed whenever a user loads the affected page. More dangerous than reflected XSS because it does not require the victim to click a crafted link. See also: *Cross-Site Scripting (XSS)*, *reflected XSS*, *DOM-based XSS*.
 
-**Supply chain attack** — An attack that compromises software through its dependencies or distribution channels rather than targeting the software directly. In WordPress, this can occur through compromised plugins, themes, or build tools. See [§7.7](#77-writing-about-supply-chain-incidents) for writing guidance.
+**Supply chain attack** — An attack that compromises software through its dependencies or distribution channels rather than targeting the software directly. In WordPress, this can occur through compromised plugins, themes, or build tools. See [§7.7](#writing-about-supply-chain-incidents) for writing guidance.
 
 **Super Admin** — The highest privileged user role in a WordPress Multisite network. Super Admins can manage all sites in the network, install plugins and themes, create and delete sites, and manage network-wide settings. Distinct from the Admin role, which on a Multisite network is scoped to a single site and has reduced capabilities. When writing about Multisite security, always specify whether you mean Admin or Super Admin. See also: *Admin (role)*, *Multisite*, *capability*.
 
