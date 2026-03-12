@@ -479,6 +479,8 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **IoC (Indicators of Compromise)** — Observable evidence that a system has been compromised, such as unexpected file modifications, unfamiliar user accounts, anomalous outbound network traffic, or known malicious file hashes. In WordPress, common IoCs include injected PHP files in plugin directories, unauthorized admin accounts, and modified core files.
 
+**KSES** — WordPress's HTML sanitization library, used to strip disallowed tags and attributes from content. The name is a recursive acronym: "KSES Strips Evil Scripts." The primary API functions are `wp_kses()`, `wp_kses_post()`, and `wp_kses_data()`. KSES enforces a context-specific allowlist of HTML elements and attributes, preventing stored XSS in user-submitted content. See also: *Cross-Site Scripting (XSS)*, *allowlist*.
+
 **Local file inclusion (LFI) / Remote file inclusion (RFI)** — File inclusion vulnerabilities in which insecure use of PHP's `include()` or `require()` with user-supplied input allows an attacker to load and execute a local server file (LFI) or a remote attacker-controlled file (RFI). Exploitation can lead to information disclosure or arbitrary code execution. A recurring vulnerability class in WordPress plugins and themes.
 
 **Malware** — Malicious software designed to disrupt, damage, or gain unauthorized access to a system. In WordPress, malware commonly takes the form of injected PHP backdoors, JavaScript redirects, SEO spam injections, cryptominers, and phishing pages hosted in the uploads directory. See also: *Infostealer*.
@@ -512,6 +514,8 @@ This glossary defines security-related terms as they are used in the WordPress e
 **Phishing** — A social engineering attack that uses deceptive communications (usually email) to trick recipients into revealing credentials, installing malware, or taking other harmful actions. "Spear phishing" targets specific individuals; "whaling" targets executives.
 
 **PHP-FPM (FastCGI Process Manager)** — The PHP process manager used in LEMP/LAMP stacks that manages PHP worker processes handling WordPress page requests via FastCGI. The recommended PHP execution mode for production WordPress deployments, providing process isolation, per-pool configuration, and better resource management than alternatives such as mod_php.
+
+**PHP security directives** — PHP `php.ini` directives that control security-relevant behavior. Three directives appear frequently in WordPress hardening contexts: `display_errors` (controls whether PHP error messages are shown to users; must be `Off` in production to prevent information disclosure), `expose_php` (controls the `X-Powered-By` HTTP header that reveals the PHP version; must be `Off` in production), and `open_basedir` (restricts PHP file operations to specified directory trees, preventing path traversal beyond the WordPress installation). All three are Level 1 hardening controls in the Benchmark. See also: *information disclosure*, *path traversal*, *hardening*.
 
 **phpass** — A portable PHP password hashing framework that was the default password hashing method in WordPress prior to version 6.8. Based on a modified MD5 scheme with stretching, phpass is considered weaker than modern alternatives. WordPress 6.8 (April 2025) replaced phpass with bcrypt as the default. See also: *bcrypt*.
 
