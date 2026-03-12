@@ -11,7 +11,7 @@ Last verified: 2026-03-12
 | Document lines | 689 | `wc -l WP-Security-Style-Guide.md` | v1.0 |
 | Major sections (H2) | 12 | `grep -cE '^## ' WP-Security-Style-Guide.md` | v1.0 |
 | Subsections (H3) | 26 | `grep -cE '^### ' WP-Security-Style-Guide.md` | v1.0 |
-| Glossary terms | 137 | `grep -cE '^\*\*[A-Z]' WP-Security-Style-Guide.md` | v1.0 |
+| Glossary terms | 137 | `grep -cE '^\*\*' WP-Security-Style-Guide.md` | v1.0 |
 | "See also:" cross-references | 53 | `grep -c 'See also:' WP-Security-Style-Guide.md` | v1.0 |
 | Table rows | 28 | `grep -cE '^\| ' WP-Security-Style-Guide.md` | v1.0 |
 | Blockquote lines | 13 | `grep -cE '^>' WP-Security-Style-Guide.md` | v1.0 |
