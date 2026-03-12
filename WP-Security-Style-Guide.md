@@ -203,7 +203,7 @@ WordPress has its own vocabulary. Use terms consistently and prefer the forms fa
 
 -   **Theme** — a collection of templates and stylesheets that control a site's visual presentation.
 
--   **wp-admin** — the URL path to the WordPress admin area. Set in monospace (`wp-admin`) when referring to the path.
+-   **wp-admin** — the URL path to the WordPress Dashboard. Set in monospace (`wp-admin`) when referring to the path.
 
 -   **wp-config.php** — the primary WordPress configuration file. Always in monospace (`wp-config.php`).
 
@@ -607,7 +607,7 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **Wordfence** — A widely used WordPress security plugin and threat intelligence service offering a web application firewall (WAF), malware scanner, login security, and a vulnerability database. In security writing, Wordfence is an example of an application-level WAF. See also: *WAF*, *virtual patching*.
 
-**wp-admin** — The URL path and directory for the WordPress administrative interface (e.g., `https://example.com/wp-admin/`). Always written in monospace when referring to the path. Some hardening configurations restrict access to this path by IP address. See also: *Dashboard*, *wp-login.php*.
+**wp-admin** — The URL path and directory for the WordPress Dashboard (e.g., `https://example.com/wp-admin/`). Always written in monospace when referring to the path. Some hardening configurations restrict access to this path by IP address. See also: *Dashboard*, *wp-login.php*.
 
 **wp-config.php** — The primary WordPress configuration file, located in the site's root directory (or one level above). Contains database credentials, authentication keys, and security constants. File permissions should be restricted to the minimum the deployment requires — typically owner-read-only (`400` or `440`) as the preferred steady state, with `600` or `640` used only when deployment automation requires write access. See §3.7 for guidance on writing about context-dependent configurations.
 
