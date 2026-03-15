@@ -2,7 +2,7 @@
 
 This file is the single source of truth for architectural counts in the WordPress Security Style Guide. Check this file before writing any count in prose, and update it when adding or removing terms, sections, or structural elements.
 
-Last verified: 2026-03-12
+Last verified: 2026-03-15
 
 ## Architectural Facts
 

@@ -451,7 +451,7 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **FedRAMP** — The Federal Risk and Authorization Management Program. A United States government-wide program that provides a standardized approach to security assessment, authorization, and continuous monitoring for cloud products and services. Relevant for enterprise WordPress deployments in government and highly regulated sectors.
 
-**File integrity monitoring** — A security practice that detects unauthorized changes to files by comparing their current state (checksums or hashes) against a known-good baseline. In WordPress, `wp-cli checksum` verifies core files against official hashes, and security plugins extend this to themes, plugins, and uploads.
+**File integrity monitoring** — A security practice that detects unauthorized changes to files by comparing their current state (checksums or hashes) against a known-good baseline. In WordPress, `wp core verify-checksums` verifies core files against official hashes, and `wp plugin verify-checksums` verifies plugin checksums where available. Security plugins can extend this to themes, uploads, and custom files.
 
 **FORCE_SSL_ADMIN** — A WordPress constant (`define( 'FORCE_SSL_ADMIN', true )`) set in `wp-config.php` that forces all Dashboard and login pages to use HTTPS. A baseline hardening measure that ensures authentication cookies are only transmitted over encrypted connections. Note: `FORCE_SSL_LOGIN` is deprecated and should not be used. See also: *HSTS*, *TLS*.
 
@@ -611,7 +611,7 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **wp-config.php** — The primary WordPress configuration file, located in the site's root directory (or one level above). Contains database credentials, authentication keys, and security constants. File permissions should be restricted to the minimum the deployment requires — typically owner-read-only (`400` or `440`) as the preferred steady state, with `600` or `640` used only when deployment automation requires write access. See §3.7 for guidance on writing about context-dependent configurations.
 
-**WP-CLI** — The official command-line interface for WordPress. WP-CLI allows administrators to manage WordPress installations without a web browser — performing tasks such as updating plugins, managing users, running database operations, and verifying file integrity (`wp checksum core`). Always written as "WP-CLI" (hyphenated, all caps). See also: *wp-admin*.
+**WP-CLI** — The official command-line interface for WordPress. WP-CLI allows administrators to manage WordPress installations without a web browser — performing tasks such as updating plugins, managing users, running database operations, and verifying file integrity (`wp core verify-checksums`, `wp plugin verify-checksums`). Always written as "WP-CLI" (hyphenated, all caps). See also: *wp-admin*.
 
 **WP-Cron** — WordPress's built-in task scheduling system, which triggers scheduled events (such as publishing scheduled posts, checking for updates, and running cleanup tasks) on page load rather than at fixed intervals. Because WP-Cron depends on site traffic, it may fire late on low-traffic sites or cause performance issues on high-traffic sites. The recommended hardening approach is to disable WP-Cron (`define( 'DISABLE_WP_CRON', true )` in `wp-config.php`) and replace it with a system-level cron job. Without the constant, a system cron runs in addition to page-load triggers rather than replacing them. See also: *wp-config.php*.
 
