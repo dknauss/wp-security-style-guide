@@ -5,6 +5,7 @@ All notable changes to the WordPress Security Style Guide.
 ## Unreleased
 
 ### Changed
+- Refreshed version-reference examples for the WordPress 7.0 release cycle and kept PHP-version guidance aligned with the current document set baseline.
 - Corrected the WP-CLI checksum command names in glossary guidance to use `wp core verify-checksums` and `wp plugin verify-checksums`.
 - Added centered page numbering to `.github/pandoc/reference.docx` so DOCX-derived PDF output includes footer page numbers through the shared generation pipeline.
 - Replaced the repo-local document-generation workflow with a caller to the shared reusable workflow in `ai-assisted-docs`, keeping the primary markdown source and generated artifact names unchanged.

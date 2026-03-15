@@ -233,13 +233,13 @@ Use two font treatments to distinguish between human-readable and machine-readab
 
 -   HTTP headers, status codes, and URL parameters: `X-Frame-Options`, `403`, `?author=1`
 
--   CVE identifiers and version numbers in technical context: `CVE-2024-1234`, `WordPress 6.5.2`
+-   CVE identifiers and version numbers in technical context: `CVE-2024-1234`, `WordPress 7.0.1`
 
-> **Boundary rule:** Use monospace when the version number is the point of the sentence—the reader needs to act on it (e.g., "Update to `3.2.1`"). Use normal font when the version appears as background context in running prose (e.g., "WordPress 6.5 introduced…").
+> **Boundary rule:** Use monospace when the version number is the point of the sentence—the reader needs to act on it (e.g., "Update to `3.2.1`"). Use normal font when the version appears as background context in running prose (e.g., "WordPress 7.0 introduced…").
 
 ### 6.3 When to Use Normal Font
 
--   Product names and their versions in running prose: WordPress 6.5, Cloudflare, Patchstack.
+-   Product names and their versions in running prose: WordPress 7.0, Cloudflare, Patchstack.
 
 -   Names of organizations, teams, and conferences: OWASP, DEF CON, WordPress Security Team.
 
