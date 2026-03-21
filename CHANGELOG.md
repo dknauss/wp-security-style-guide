@@ -4,7 +4,13 @@ All notable changes to the WordPress Security Style Guide.
 
 ## Unreleased
 
+## 1.1.0 — 2026-03-21
+
 ### Changed
+- Standardized license metadata on the canonical Creative Commons legal text and normalized in-repo references to `CC-BY-SA-4.0`.
+- Added explicit repository health files (`CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SUPPORT.md`, `.gitattributes`) and linked them from the README so the repo no longer relies on inherited defaults for contributor guidance.
+- Added a shared `Project Health` section in the README and aligned contributor and AI-assisted editorial copy with the rest of the security-document series.
+- Replaced the hard-coded local verification path in `docs/current-metrics.md` with `git rev-parse --show-toplevel` for path-independent maintenance checks.
 - Refreshed version-reference examples for the WordPress 7.0 release cycle and kept PHP-version guidance aligned with the current document set baseline.
 - Corrected the WP-CLI checksum command names in glossary guidance to use `wp core verify-checksums` and `wp plugin verify-checksums`.
 - Added centered page numbering to `.github/pandoc/reference.docx` so DOCX-derived PDF output includes footer page numbers through the shared generation pipeline.

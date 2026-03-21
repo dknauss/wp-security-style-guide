@@ -3,7 +3,7 @@ title: "Writing About Security, Vulnerability, and Open Source Software: A Style
 subtitle: "Principles, Practices, and Terminology for Clear, Honest, and Empowering Communication"
 author: "Dan Knauss"
 date: "March 21, 2026"
-version: "1.0"
+version: "1.1"
 ---
 
 ## 1. Security, Vulnerability, and Trust in Open Source

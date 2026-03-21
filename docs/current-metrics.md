@@ -2,7 +2,7 @@
 
 This file is the single source of truth for architectural counts in the WordPress Security Style Guide. Check this file before writing any count in prose, and update it when adding or removing terms, sections, or structural elements.
 
-Last verified: 2026-03-15
+Last verified: 2026-03-21
 
 ## Architectural Facts
 
@@ -47,7 +47,7 @@ Key terminology rules enforced across the series:
 Run after any structural edit:
 
 ```bash
-cd /Users/danknauss/Documents/GitHub/wp-security-style-guide
+cd "$(git rev-parse --show-toplevel)"
 
 echo "=== Document size ==="
 wc -l WP-Security-Style-Guide.md

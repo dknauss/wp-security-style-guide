@@ -52,14 +52,22 @@ This guide is intended to be used as a reference when drafting:
 
 ## Contributors
 
-- [Dan Knauss](https://dan.knauss.ca) — author, editor
+- [Dan Knauss](https://dan.knauss.ca) — (Human) — author, editor, reviewer, researcher
 - [Claude](https://claude.ai) (Anthropic) — review, revision, cross-document alignment
 - [Gemini](https://gemini.google.com) (Google) — independent review and revision planning
 - [GPT-5 Codex](https://openai.com) (OpenAI) — independent review and revision planning
 
 ## AI-Assisted Editorial Process
 
-This document and the three related documents in this series are revised with the assistance of frontier LLMs. Multiple models independently review all four documents for factual errors, outdated guidance, and cross-document misalignments, with the WordPress Advanced Administration Handbook as primary authority. A human editor reviews, approves, or rejects every recommended change before it is applied. For the full methodology, see **[AI-Assisted Documentation Processes](https://github.com/dknauss/ai-assisted-docs)**.
+This document and the three related documents in this series are revised with the assistance of frontier LLMs. Multiple models independently review all four documents for factual errors, outdated guidance, and cross-document misalignments, with the WordPress Advanced Administration Handbook as primary authority. A human editor reviews, approves, or rejects every recommended change before it is applied. For the full methodology, see **[AI-Assisted Documentation Processes](https://github.com/dknauss/ai-assisted-docs)**. The machine-readable editorial agent skills and cross-document consistency rules are in the [skills directory](https://github.com/dknauss/ai-assisted-docs/tree/main/wp-docs-skills).
+
+## Project Health
+
+- Contributions: see **[CONTRIBUTING.md](CONTRIBUTING.md)**.
+- Security reporting: see **[SECURITY.md](SECURITY.md)**.
+- Community expectations: see **[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)**.
+- Support boundaries: see **[SUPPORT.md](SUPPORT.md)**.
+- License: **[LICENSE](LICENSE)**.
 
 ## License
 
