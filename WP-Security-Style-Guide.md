@@ -688,6 +688,6 @@ Plugin/Theme vulnerabilities must always be communicated to customers. To ensure
 
 ## License and Attribution
 
-This document is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/). You may copy, redistribute, remix, transform, and build upon this material for any purpose, including commercial use, provided you give appropriate credit and distribute your contributions under the same license.
+This document is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License (CC-BY-SA-4.0)](https://creativecommons.org/licenses/by-sa/4.0/). You may copy, redistribute, remix, transform, and build upon this material for any purpose, including commercial use, provided you give appropriate credit and distribute your contributions under the same license.
 
 **Sources and Acknowledgments:** Terminology and formatting conventions are adapted from and indebted to the *Bishop Fox Cybersecurity Style Guide* (2023), used with attribution. AI threat data draws on the Verizon Data Breach Investigations Report (2025) and IBM's Cost of a Data Breach Report (2025).
