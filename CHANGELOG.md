@@ -10,6 +10,7 @@ All notable changes to the WordPress Security Style Guide.
 - Added a Playwright-based PDF visual smoke test and dedicated workflow with committed baselines for critical page regions.
 
 ### Changed
+- Updated GitHub Action pins in the PDF visual validation workflow to Node 24-capable major versions to remove runner deprecation warnings.
 - Renamed comparison-table headers from `Do` / `Don't` to `Recommended` / `Avoid` for clearer plain-text guidance across all output formats.
 - Replaced checkmark and cross symbols in comparison-table headers with plain text so Markdown, PDF, EPUB, and DOCX outputs render consistently.
 - Set a short PDF running header title so long document titles no longer wrap into the page body area.
