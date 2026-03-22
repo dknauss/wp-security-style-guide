@@ -60,7 +60,7 @@ Remember that the vast majority of WordPress compromises trace back to a few rec
 
 When assigning responsibility, make sure it serves a purpose. Responsibility should point toward action, not blame. Be clear about what is within the user's control, what depends on their hosting provider, and what falls to the WordPress core team or plugin developers. Level with your audience, but don't push them away.
 
-| **Do** | **Don't** |
+| **Recommended** | **Avoid** |
 | --- | --- |
 | "This vulnerability affects sites running Plugin X versions prior to 3.2. Update immediately to version 3.2.1, which includes a patch." | "Your site could be hacked at any moment if you use Plugin X." |
 | "Strong passwords and two-factor authentication significantly reduce the risk of unauthorized access." | "If you get hacked, it's your own fault for using weak passwords." |
@@ -88,7 +88,7 @@ AI-powered tools are increasingly used in WordPress security—for malware scann
 
 -   **Avoid hype and anthropomorphism.** AI is a tool, not a colleague. Don't attribute agency, judgment, or intent to automated systems.
 
-| **Do** | **Don't** |
+| **Recommended** | **Avoid** |
 | --- | --- |
 | "The scanner uses pattern matching to identify known malware signatures." | "Our AI intelligently detects all threats." |
 | "This code was generated with AI assistance and has been reviewed for security." | "Our AI wrote secure code." |
@@ -117,7 +117,7 @@ Many security recommendations — file permissions, server configuration values,
 
 -   **Provide context for specific values.** When you must cite a specific value, qualify it: explain the assumptions (e.g., "assumes the web server runs as `www-data` and is the only process that needs read access"), note when alternatives are appropriate, and cross-reference the Benchmark for auditable guidance.
 
-| **Do** | **Don't** |
+| **Recommended** | **Avoid** |
 | --- | --- |
 | "Restrict `wp-config.php` to the minimum permissions your deployment requires. Owner-read-only (`400` or `440`) is preferred when your deployment pipeline does not need write access." | "Set `wp-config.php` to `600`." |
 | "Grant only the eight specific database privileges WordPress requires (SELECT, INSERT, UPDATE, DELETE, CREATE, ALTER, INDEX, DROP)." | "Set up the database and make sure the user has access." |
@@ -181,7 +181,7 @@ Security writing can easily become a closed conversation among experts. Actively
 
 Use inclusive, contemporary language. Some traditional security terminology carries exclusionary connotations or has clearer modern alternatives:
 
-| **Do** | **Don't** |
+| **Recommended** | **Avoid** |
 | --- | --- |
 | allowlist / denylist | whitelist / blacklist |
 | primary / replica | master / slave |
@@ -296,7 +296,7 @@ Match the urgency of your language to the actual severity of the vulnerability. 
 | 4.0–6.9 | Medium | Case-by-case decision by Development, Support, and Marketing |
 | 0.1–3.9 | Low | Product update email |
 
-| **Do** | **Don't** |
+| **Recommended** | **Avoid** |
 | --- | --- |
 | "Critical: unauthenticated remote code execution" | "Extremely dangerous flaw found in popular plugin!" |
 | "Low severity: authenticated stored XSS requiring administrator role" | "Minor issue, probably nothing to worry about." |

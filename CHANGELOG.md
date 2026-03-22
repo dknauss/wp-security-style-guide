@@ -8,6 +8,7 @@ All notable changes to the WordPress Security Style Guide.
 - Added a `Series review` issue form so quarterly and pre-release cross-document alignment checks can be tracked explicitly.
 
 ### Changed
+- Renamed comparison-table headers from `Do` / `Don't` to `Recommended` / `Avoid` for clearer plain-text guidance across all output formats.
 - Replaced checkmark and cross symbols in comparison-table headers with plain text so Markdown, PDF, EPUB, and DOCX outputs render consistently.
 - Set a short PDF running header title so long document titles no longer wrap into the page body area.
 - Hardened GitHub release automation fallback handling and pinned reusable workflow and action references to immutable commits for more reproducible CI/CD runs.
