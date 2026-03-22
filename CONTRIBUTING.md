@@ -79,10 +79,13 @@ After generated artifacts change, run:
 
 ```bash
 python3 .github/scripts/validate-artifacts.py
+npm run validate:pdf-visual
 ```
 
 This smoke check confirms the tracked PDF, EPUB, and DOCX outputs exist, are
-readable, and still contain expected canonical text and metadata markers.
+readable, and still contain expected canonical text and metadata markers. The
+Playwright PDF visual smoke test compares a small set of critical page clips
+against committed baselines.
 
 ## Maintainer Workflow
 
