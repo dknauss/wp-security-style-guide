@@ -75,6 +75,15 @@ local Pandoc toolchain when required by the change.
 If you cannot regenerate artifacts locally, note that in the pull request
 instead of committing guessed outputs.
 
+After generated artifacts change, run:
+
+```bash
+python3 .github/scripts/validate-artifacts.py
+```
+
+This smoke check confirms the tracked PDF, EPUB, and DOCX outputs exist, are
+readable, and still contain expected canonical text and metadata markers.
+
 ## Maintainer Workflow
 
 For canonical document changes:
@@ -87,7 +96,10 @@ For canonical document changes:
 4. Merge to `main`.
 5. Confirm the `Generate PDF, Word & EPUB Documents` workflow succeeds and that
    the generated artifacts still match the canonical Markdown source.
-6. Create a version tag only when enough user-visible changes justify a release.
+6. Confirm the `Validate Artifacts` workflow succeeds after generation and that
+   it validates the generated PDF, EPUB, and DOCX outputs against the canonical
+   source expectations.
+7. Create a version tag only when enough user-visible changes justify a release.
    After tagging, confirm the `Create Release` workflow publishes the generated
    artifacts for that tag.
 

@@ -6,6 +6,7 @@ All notable changes to the WordPress Security Style Guide.
 
 ### Added
 - Added a `Series review` issue form so quarterly and pre-release cross-document alignment checks can be tracked explicitly.
+- Added a repo-local generated-artifact smoke validator and a dedicated `Validate Artifacts` workflow for PDF, EPUB, and DOCX outputs.
 
 ### Changed
 - Renamed comparison-table headers from `Do` / `Don't` to `Recommended` / `Avoid` for clearer plain-text guidance across all output formats.
