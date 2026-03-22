@@ -14,7 +14,7 @@ permissions:
 
 jobs:
   generate-docs:
-    uses: dknauss/ai-assisted-docs/.github/workflows/reusable-generate-docs.yml@main
+    uses: dknauss/ai-assisted-docs/.github/workflows/reusable-generate-docs.yml@fcd4f51944026f82316df03e73882a607a09dc37
     with:
       primary_markdown: WP-Security-Style-Guide.md
     secrets: inherit

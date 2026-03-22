@@ -75,6 +75,51 @@ local Pandoc toolchain when required by the change.
 If you cannot regenerate artifacts locally, note that in the pull request
 instead of committing guessed outputs.
 
+## Maintainer Workflow
+
+For canonical document changes:
+
+1. Edit `WP-Security-Style-Guide.md`.
+2. Run `bash .github/scripts/verify-metrics.sh docs/current-metrics.md` if the
+   change affects structural counts, then update `docs/current-metrics.md` as
+   needed.
+3. Update `CHANGELOG.md` for any user-visible documentation or workflow change.
+4. Merge to `main`.
+5. Confirm the `Generate PDF, Word & EPUB Documents` workflow succeeds and that
+   the generated artifacts still match the canonical Markdown source.
+6. Create a version tag only when enough user-visible changes justify a release.
+   After tagging, confirm the `Create Release` workflow publishes the generated
+   artifacts for that tag.
+
+For workflow-only changes:
+
+1. Update `CHANGELOG.md` when the change affects maintainers or release
+   behavior.
+2. Manually dispatch the affected workflow after merge when a safe no-tag check
+   is available.
+3. Avoid testing the release workflow against a new tag unless you intend to
+   publish a real release.
+
+## Cross-Document Review Cadence
+
+This repository is part of a four-document WordPress security series. Review it
+against the companion repositories at least quarterly and before any release:
+
+- `wp-security-benchmark`
+- `wp-security-hardening-guide`
+- `wordpress-runbook-template`
+
+During each review, check:
+
+- shared glossary terms and preferred terminology
+- WordPress, PHP, and WP-CLI version references
+- linked commands, external references, and support/reporting language
+- whether a change here should also land in one or more companion repos
+
+Record any follow-up as issues or pull requests in the affected repository so
+cross-document drift is tracked explicitly. Use the `Series review` issue form
+in this repository to capture each quarterly or pre-release review pass.
+
 ## Pull Requests
 
 Pull requests should:

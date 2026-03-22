@@ -4,6 +4,13 @@ All notable changes to the WordPress Security Style Guide.
 
 ## Unreleased
 
+### Added
+- Added a `Series review` issue form so quarterly and pre-release cross-document alignment checks can be tracked explicitly.
+
+### Changed
+- Hardened GitHub release automation fallback handling and pinned reusable workflow and action references to immutable commits for more reproducible CI/CD runs.
+- Documented the maintainer edit, verification, artifact-generation, release, and cross-document review workflow for this repository and its companion document series.
+
 ## 1.1.0 — 2026-03-21
 
 ### Changed
