@@ -8,6 +8,7 @@ All notable changes to the WordPress Security Style Guide.
 - Added a `Series review` issue form so quarterly and pre-release cross-document alignment checks can be tracked explicitly.
 - Added a repo-local generated-artifact smoke validator and a dedicated `Validate Artifacts` workflow for PDF, EPUB, and DOCX outputs.
 - Added a Playwright-based PDF visual smoke test and dedicated workflow with committed baselines for critical page regions.
+- Added a cross-format parity check so a small set of canonical phrases must remain present in the Markdown source and generated PDF, EPUB, and DOCX outputs.
 
 ### Changed
 - Refactored the document-generation pipeline into explicit build, validate, and publish jobs so generated artifacts are validated before the bot commit step runs.

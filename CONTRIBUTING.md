@@ -83,7 +83,8 @@ npm run validate:pdf-visual
 ```
 
 This smoke check confirms the tracked PDF, EPUB, and DOCX outputs exist, are
-readable, and still contain expected canonical text and metadata markers. The
+readable, still contain expected canonical text and metadata markers, and keep
+a small set of canonical phrases aligned with the Markdown source. The
 Playwright PDF visual smoke test compares a small set of critical page clips
 against committed baselines.
 
