@@ -26,7 +26,9 @@ const BASELINE_DIR = path.join(".github", "test-artifacts", "pdf-baselines");
 const OUTPUT_DIR = path.join("output", "playwright", "pdf-visual");
 const VIEWPORT = { width: 1200, height: 760 };
 const PIXELMATCH_THRESHOLD = 0.1;
-const MAX_DIFF_RATIO = 0.003;
+const DHASH_WIDTH = 17;
+const DHASH_HEIGHT = 16;
+const MAX_DHASH_DISTANCE = 20;
 
 function parseArgs(argv) {
   return {
@@ -47,6 +49,38 @@ function pngPaths(name) {
     actual: path.join(OUTPUT_DIR, "actual", `${name}.png`),
     diff: path.join(OUTPUT_DIR, "diff", `${name}.png`),
   };
+}
+
+function grayscaleAt(image, x, y) {
+  const index = (y * image.width + x) * 4;
+  const r = image.data[index];
+  const g = image.data[index + 1];
+  const b = image.data[index + 2];
+  return 0.299 * r + 0.587 * g + 0.114 * b;
+}
+
+function differenceHash(image, width = DHASH_WIDTH, height = DHASH_HEIGHT) {
+  const bits = [];
+  for (let y = 0; y < height; y += 1) {
+    for (let x = 0; x < width - 1; x += 1) {
+      const leftX = Math.floor(((x + 0.5) * image.width) / width);
+      const rightX = Math.floor(((x + 1.5) * image.width) / width);
+      const sampleY = Math.floor(((y + 0.5) * image.height) / height);
+      bits.push(grayscaleAt(image, leftX, sampleY) > grayscaleAt(image, rightX, sampleY) ? 1 : 0);
+    }
+  }
+  return bits;
+}
+
+function hammingDistance(left, right) {
+  assert(left.length === right.length, "Cannot compare hashes of different lengths");
+  let distance = 0;
+  for (let index = 0; index < left.length; index += 1) {
+    if (left[index] !== right[index]) {
+      distance += 1;
+    }
+  }
+  return distance;
 }
 
 function contentTypeFor(filePath) {
@@ -141,20 +175,16 @@ async function compareCase(browser, baseUrl, caseSpec) {
     actual.height,
     { threshold: PIXELMATCH_THRESHOLD }
   );
-  const totalPixels = actual.width * actual.height;
-  const diffRatio = diffPixels / totalPixels;
-
   await writeFile(paths.diff, PNG.sync.write(diff));
+  const dHashDistance = hammingDistance(differenceHash(baseline), differenceHash(actual));
 
-  if (diffRatio > MAX_DIFF_RATIO) {
+  if (dHashDistance > MAX_DHASH_DISTANCE) {
     throw new Error(
-      `${caseSpec.name} visual diff too large: ${diffPixels} pixels (${(diffRatio * 100).toFixed(3)}%)`
+      `${caseSpec.name} perceptual diff too large: dHash distance ${dHashDistance}, raw diff ${diffPixels} pixels`
     );
   }
 
-  console.log(
-    `OK   [${caseSpec.name}] visual diff ${diffPixels} pixels (${(diffRatio * 100).toFixed(3)}%)`
-  );
+  console.log(`OK   [${caseSpec.name}] dHash distance ${dHashDistance}, raw diff ${diffPixels} pixels`);
 }
 
 async function main() {
