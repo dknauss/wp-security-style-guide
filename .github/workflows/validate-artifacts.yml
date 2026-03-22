@@ -1,13 +1,6 @@
 name: Validate Artifacts
 
 on:
-  workflow_run:
-    workflows:
-      - 'Generate PDF, Word & EPUB Documents'
-    types:
-      - completed
-    branches:
-      - main
   push:
     branches: [main]
     paths:
@@ -20,13 +13,10 @@ permissions:
 
 jobs:
   validate-artifacts:
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
-        with:
-          ref: ${{ github.event_name == 'workflow_run' && 'refs/heads/main' || github.ref }}
 
       - name: Install PDF text extractor
         run: |

@@ -97,11 +97,11 @@ For canonical document changes:
    needed.
 3. Update `CHANGELOG.md` for any user-visible documentation or workflow change.
 4. Merge to `main`.
-5. Confirm the `Generate PDF, Word & EPUB Documents` workflow succeeds and that
-   the generated artifacts still match the canonical Markdown source.
-6. Confirm the `Validate Artifacts` workflow succeeds after generation and that
-   it validates the generated PDF, EPUB, and DOCX outputs against the canonical
-   source expectations.
+5. Confirm the phased `Generate PDF, Word & EPUB Documents` workflow completes:
+   it should build the outputs, run artifact and PDF visual validation, and only
+   then publish regenerated files back to `main`.
+6. Use the standalone `Validate Artifacts` and `Validate PDF Visuals` workflows
+   for direct validator changes or manual rechecks without regenerating docs.
 7. Create a version tag only when enough user-visible changes justify a release.
    After tagging, confirm the `Create Release` workflow publishes the generated
    artifacts for that tag.
