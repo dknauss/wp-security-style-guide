@@ -361,11 +361,15 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **Account takeover (ATO)** — An attack in which a threat actor gains unauthorized control of a user's account, typically via credential stuffing, phishing, brute-force attack, or stolen session cookies. In WordPress, administrator account takeover is a critical breach scenario. Mitigated by 2FA, strong passwords, and session monitoring. See also: *credential stuffing*, *session hijacking*, *brute-force attack*.
 
+**Abilities API** — A WordPress interface for registering and executing named abilities that software can use to interact with WordPress. In WordPress 7.0, the client-side implementation integrates with server-registered abilities through the `/wp-abilities/v1/` REST API and is explicitly intended for AI agents, workflow automation tools, and plugins. When writing about it in security contexts, frame it as an authorization and capability boundary, not just a convenience feature. See also: *authorization*, *capability*, *REST API*.
+
 **Action-gated reauthentication** — A security mechanism that requires a user to re-verify their identity (usually via password and 2FA) specifically before performing a sensitive or destructive action, such as installing a plugin, deleting a theme, or changing user roles. Also known as "sudo mode."
 
 **Admin (role)** — The highest default user role in a single-site WordPress installation. Administrators can install plugins, modify themes, manage users, and change site settings. On a Multisite network, the equivalent is Super Admin.
 
 **AICPA** — American Institute of Certified Public Accountants. A U.S.-based professional association that develops auditing and attestation standards, including the Trust Services Criteria used in SOC 2 reporting.
+
+**AI Client** — The WordPress 7.0 core-adjacent abstraction layer for integrating AI providers and prompt execution flows. In security writing, distinguish the AI Client from third-party provider plugins and from browser-side JavaScript wrappers. The main security questions are authorization, provider governance, output handling, and secret management rather than feature novelty. See also: *Abilities API*, *authorization*, *connector*, *prompt injection*.
 
 **AI-generated phishing** — Phishing content produced using large language models (LLMs) or other generative AI tools, typically more convincing and personalized than template-based phishing. IBM's Cost of a Data Breach Report (2025) attributed 37% of AI-driven breaches to this vector. See also: *phishing*, *prompt injection*.
 
@@ -412,6 +416,8 @@ This glossary defines security-related terms as they are used in the WordPress e
 **CDN (Content Delivery Network)** — A globally distributed network of servers that caches and delivers web content from locations geographically closer to the user. In WordPress security, CDNs provide DDoS mitigation through traffic scrubbing, TLS termination, and WAF capabilities at the network edge. See also: *WAF*, *DDoS*.
 
 **Composer** — A dependency manager for PHP, widely used in modern WordPress plugin and theme development to manage third-party libraries. If a Composer package is compromised, all projects that depend on it may be affected—a key supply chain risk. See also: *npm*, *dependency confusion*, *SBOM*, *build pipeline*.
+
+**Connector** — In WordPress 7.0 AI infrastructure, a registered integration that provides access to an external provider or service through the Connectors API. Connectors may source credentials from environment variables, PHP constants, or the database. When writing about connectors in security contexts, make clear that database-backed API keys are masked in the interface but not encrypted, so environment variables or `wp-config.php` constants remain the preferred storage model. See also: *AI Client*, *authorization*, *wp-config.php*.
 
 **Content Security Policy (CSP)** — An HTTP response header that controls which resources (scripts, styles, images) a browser is allowed to load on a page. Effective against XSS attacks. Configured at the server or application level.
 

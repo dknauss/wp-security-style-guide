@@ -11,6 +11,7 @@ All notable changes to the WordPress Security Style Guide.
 - Added a cross-format parity check so a small set of canonical phrases must remain present in the Markdown source and generated PDF, EPUB, and DOCX outputs.
 
 ### Changed
+- Added glossary coverage for WordPress 7.0 AI-specific terminology, including the Abilities API, AI Client, and connector secret-management context.
 - Refactored the document-generation pipeline into explicit build, validate, and publish jobs so generated artifacts are validated before the bot commit step runs.
 - Updated GitHub Action pins in the PDF visual validation workflow to Node 24-capable major versions to remove runner deprecation warnings.
 - Renamed comparison-table headers from `Do` / `Don't` to `Recommended` / `Avoid` for clearer plain-text guidance across all output formats.
