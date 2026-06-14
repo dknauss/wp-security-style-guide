@@ -1,5 +1,5 @@
 # WordPress Security Style Guide
-[![License](https://img.shields.io/github/license/dknauss/wp-security-style-guide)](LICENSE) [![CI](https://github.com/dknauss/wp-security-style-guide/actions/workflows/generate-docs.yml/badge.svg)](https://github.com/dknauss/wp-security-style-guide/actions/workflows/generate-docs.yml) [![Latest Release](https://img.shields.io/github/v/release/dknauss/wp-security-style-guide)](https://github.com/dknauss/wp-security-style-guide/releases) [![Security Policy](https://img.shields.io/badge/security-policy-4c1)](SECURITY.md)
+[![License](https://img.shields.io/github/license/dknauss/wp-security-style-guide)](LICENSE) [![CI](https://github.com/dknauss/wp-security-style-guide/actions/workflows/generate-docs.yml/badge.svg)](https://github.com/dknauss/wp-security-style-guide/actions/workflows/generate-docs.yml) [![Latest Release](https://img.shields.io/github/v/release/dknauss/wp-security-style-guide)](https://github.com/dknauss/wp-security-style-guide/releases) [![Security Policy](https://img.shields.io/badge/security-policy-4c1)](SECURITY.md) [![AI Authorship](https://img.shields.io/badge/AI%20authorship-disclosed-8a63d2.svg)](docs/ai-authorship.md)
 
 
 A comprehensive guide for writing about WordPress and security with clarity, honesty, and empowerment.
