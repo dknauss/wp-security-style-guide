@@ -8,11 +8,11 @@ Last verified: 2026-06-14
 
 | Fact | Value | Verification command | Last changed |
 |---|---:|---|---|
-| Document lines | 699 | `wc -l WP-Security-Style-Guide.md` | 2026-06-14 |
+| Document lines | 701 | `wc -l WP-Security-Style-Guide.md` | 2026-06-14 |
 | Major sections (H2) | 12 | `grep -cE '^## ' WP-Security-Style-Guide.md` | v1.0 |
 | Subsections (H3) | 26 | `grep -cE '^### ' WP-Security-Style-Guide.md` | v1.0 |
-| Glossary terms | 142 | `grep -cE '^\*\*' WP-Security-Style-Guide.md` | 2026-06-14 |
-| "See also:" cross-references | 58 | `grep -c 'See also:' WP-Security-Style-Guide.md` | 2026-06-14 |
+| Glossary terms | 143 | `grep -cE '^\*\*' WP-Security-Style-Guide.md` | 2026-06-14 |
+| "See also:" cross-references | 59 | `grep -c 'See also:' WP-Security-Style-Guide.md` | 2026-06-14 |
 | Table rows | 28 | `grep -cE '^\| ' WP-Security-Style-Guide.md` | v1.0 |
 | Blockquote lines | 13 | `grep -cE '^>' WP-Security-Style-Guide.md` | v1.0 |
 | Code fences | 0 | `grep -c '^\`\`\`' WP-Security-Style-Guide.md` | v1.0 |
@@ -29,7 +29,7 @@ Last verified: 2026-06-14
 | 5 | Inclusive communication | 3 subsections on terminology, accessibility |
 | 6 | Technical formatting | 5 subsections on code, links, version references |
 | 7 | Vulnerability writing | 7 subsections on disclosure, severity, communication |
-| 8 | Glossary | 142 defined terms with cross-references |
+| 8 | Glossary | 143 defined terms with cross-references |
 | 9 | Operational appendix | Internal vulnerability communication workflow |
 
 ## Terminology Coverage

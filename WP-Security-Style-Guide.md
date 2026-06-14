@@ -369,7 +369,7 @@ This glossary defines security-related terms as they are used in the WordPress e
 
 **AICPA** — American Institute of Certified Public Accountants. A U.S.-based professional association that develops auditing and attestation standards, including the Trust Services Criteria used in SOC 2 reporting.
 
-**AI Client** — The WordPress 7.0 core-adjacent abstraction layer for integrating AI providers and prompt execution flows. In security writing, distinguish the AI Client from third-party provider plugins and from browser-side JavaScript wrappers. The main security questions are authorization, provider governance, output handling, and secret management rather than feature novelty. See also: *Abilities API*, *authorization*, *connector*, *prompt injection*.
+**AI Client** — The WordPress 7.0 core-adjacent abstraction layer for integrating AI providers and prompt execution flows. In security writing, distinguish the AI Client from third-party provider plugins and from browser-side JavaScript wrappers. The main security questions are authorization, provider governance, output handling, and secret management rather than feature novelty. See also: *Abilities API*, *authorization*, *Connector*, *Core-adjacent*, *prompt injection*.
 
 **AI-generated phishing** — Phishing content produced using large language models (LLMs) or other generative AI tools, typically more convincing and personalized than template-based phishing. IBM's Cost of a Data Breach Report (2025) attributed 37% of AI-driven breaches to this vector. See also: *phishing*, *prompt injection*.
 
@@ -418,6 +418,8 @@ This glossary defines security-related terms as they are used in the WordPress e
 **Composer** — A dependency manager for PHP, widely used in modern WordPress plugin and theme development to manage third-party libraries. If a Composer package is compromised, all projects that depend on it may be affected—a key supply chain risk. See also: *npm*, *dependency confusion*, *SBOM*, *build pipeline*.
 
 **Connector** — In WordPress 7.0 AI infrastructure, a registered integration that provides access to an external provider or service through the Connectors API. Connectors may source credentials from environment variables, PHP constants, or the database. When writing about connectors in security contexts, make clear that database-backed API keys are masked in the interface but not encrypted, so environment variables or `wp-config.php` constants remain the preferred storage model. See also: *AI Client*, *authorization*, *wp-config.php*.
+
+**Core-adjacent** — Describes features, packages, APIs, or infrastructure that are closely coupled to WordPress core or shipped as part of the official WordPress project ecosystem, but are not necessarily all implemented directly in core itself. Use this term when `core` would overstate what ships in WordPress itself and `third-party` would understate the project relationship. See also: *AI Client*, *WordPress*.
 
 **Content Security Policy (CSP)** — An HTTP response header that controls which resources (scripts, styles, images) a browser is allowed to load on a page. Effective against XSS attacks. Configured at the server or application level.
 
