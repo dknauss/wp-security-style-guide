@@ -15,6 +15,7 @@ All notable changes to the WordPress Security Style Guide.
 - Separated Playwright PDF visual validation from the artifact publish path so `generate-docs.yml` can publish after artifact checks while the dedicated visual workflow handles layout regression checks on workflow, packaging, and Pandoc changes.
 - Added glossary coverage for WordPress 7.0 AI-specific terminology, including the Abilities API, AI Client, and connector secret-management context.
 - Revised the voice and inclusive-communication sections to emphasize clear, friendly, positive-neutral writing for a global audience that includes ESL readers, newcomers, and people encountering WordPress through the document for the first time.
+- Updated contributor and AI-authorship process notes so Learn WordPress's *Writing in the WordPress voice* is explicitly the editorial baseline for WordPress-specific voice, tone, and accessibility decisions.
 - Refactored the document-generation pipeline into explicit build, validate, and publish jobs so generated artifacts are validated before the bot commit step runs.
 - Updated GitHub Action pins in the PDF visual validation workflow to Node 24-capable major versions to remove runner deprecation warnings.
 - Renamed comparison-table headers from `Do` / `Don't` to `Recommended` / `Avoid` for clearer plain-text guidance across all output formats.
