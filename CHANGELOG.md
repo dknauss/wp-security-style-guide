@@ -4,6 +4,9 @@ All notable changes to the WordPress Security Style Guide.
 
 ## Unreleased
 
+### Fixed
+- Made generated-artifact validation read the expected version string from the Markdown frontmatter instead of hardcoding `Version 1.1`, so future version bumps do not break the publish workflow badge or block artifact publication.
+
 ## 1.2.0 — 2026-06-17
 
 ### Added
