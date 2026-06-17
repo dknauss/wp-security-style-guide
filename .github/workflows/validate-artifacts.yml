@@ -3,9 +3,14 @@ name: Validate Artifacts
 on:
   push:
     branches: [main]
-    paths:
+    paths: &artifact_paths
+      - 'WP-Security-Style-Guide.pdf'
+      - 'WP-Security-Style-Guide.docx'
+      - 'WP-Security-Style-Guide.epub'
       - '.github/scripts/validate-artifacts.py'
       - '.github/workflows/validate-artifacts.yml'
+  pull_request:
+    paths: *artifact_paths
   workflow_dispatch:
 
 permissions:
