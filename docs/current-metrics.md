@@ -2,15 +2,15 @@
 
 This file is the single source of truth for architectural counts in the WordPress Security Style Guide. Check this file before writing any count in prose, and update it when adding or removing terms, sections, or structural elements.
 
-Last verified: 2026-06-14
+Last verified: 2026-06-16
 
 ## Architectural Facts
 
 | Fact | Value | Verification command | Last changed |
 |---|---:|---|---|
-| Document lines | 701 | `wc -l WP-Security-Style-Guide.md` | 2026-06-14 |
+| Document lines | 732 | `wc -l WP-Security-Style-Guide.md` | 2026-06-16 |
 | Major sections (H2) | 12 | `grep -cE '^## ' WP-Security-Style-Guide.md` | v1.0 |
-| Subsections (H3) | 26 | `grep -cE '^### ' WP-Security-Style-Guide.md` | v1.0 |
+| Subsections (H3) | 28 | `grep -cE '^### ' WP-Security-Style-Guide.md` | 2026-06-16 |
 | Glossary terms | 143 | `grep -cE '^\*\*' WP-Security-Style-Guide.md` | 2026-06-14 |
 | "See also:" cross-references | 59 | `grep -c 'See also:' WP-Security-Style-Guide.md` | 2026-06-14 |
 | Table rows | 28 | `grep -cE '^\| ' WP-Security-Style-Guide.md` | v1.0 |
@@ -25,8 +25,8 @@ Last verified: 2026-06-14
 |---|---|---|
 | 1–2 | Philosophy | Security, vulnerability, trust in open source |
 | 3 | Writing guidelines | 7 subsections on accuracy, framing, attribution |
-| 4 | Audience and voice | 3 subsections on tone calibration |
-| 5 | Inclusive communication | 3 subsections on terminology, accessibility |
+| 4 | Audience and voice | 4 subsections on audiences, tone, and WordPress voice |
+| 5 | Inclusive communication | 4 subsections on terminology, accessibility, and pre-publish checks |
 | 6 | Technical formatting | 5 subsections on code, links, version references |
 | 7 | Vulnerability writing | 7 subsections on disclosure, severity, communication |
 | 8 | Glossary | 143 defined terms with cross-references |

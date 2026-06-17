@@ -52,6 +52,8 @@ This guide is intended to be used as a reference when drafting:
 - Educational content for WordPress users.
 - Incident response communications.
 
+Recommended foundational training: [Learn WordPress — Writing in the WordPress voice](https://learn.wordpress.org/course/writing-in-the-wordpress-voice/). Contributors, maintainers, support staff, developer advocates, and communications teams should take the course before making substantial voice-and-tone changes.
+
 ## Contributors
 
 - [Dan Knauss](https://dan.knauss.ca) — (Human) — author, editor, reviewer, researcher
@@ -61,7 +63,7 @@ This guide is intended to be used as a reference when drafting:
 
 ## AI-Assisted Editorial Process
 
-This document and the three related documents in this series are revised with the assistance of frontier LLMs. Multiple models independently review all four documents for factual errors, outdated guidance, and cross-document misalignments, with the WordPress Advanced Administration Handbook as primary authority. A human editor reviews, approves, or rejects every recommended change before it is applied. For the full methodology, see **[AI-Assisted Documentation Processes](https://github.com/dknauss/ai-assisted-docs)**. The machine-readable editorial agent skills and cross-document consistency rules are in the [skills directory](https://github.com/dknauss/ai-assisted-docs/tree/main/wp-docs-skills).
+This document and the three related documents in this series are revised with the assistance of frontier LLMs. Multiple models independently review all four documents for factual errors, outdated guidance, and cross-document misalignments, using WordPress technical documentation as primary authority for product facts and the Learn WordPress course [Writing in the WordPress voice](https://learn.wordpress.org/course/writing-in-the-wordpress-voice/) as primary authority for WordPress-specific voice and accessibility guidance. A human editor reviews, approves, or rejects every recommended change before it is applied. For the full methodology, see **[AI-Assisted Documentation Processes](https://github.com/dknauss/ai-assisted-docs)**. The machine-readable editorial agent skills and cross-document consistency rules are in the [skills directory](https://github.com/dknauss/ai-assisted-docs/tree/main/wp-docs-skills).
 
 ## Project Health
 
