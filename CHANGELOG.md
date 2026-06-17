@@ -4,6 +4,8 @@ All notable changes to the WordPress Security Style Guide.
 
 ## Unreleased
 
+## 1.2.0 — 2026-06-17
+
 ### Added
 - Added a `Series review` issue form so quarterly and pre-release cross-document alignment checks can be tracked explicitly.
 - Added a repo-local generated-artifact smoke validator and a dedicated `Validate Artifacts` workflow for PDF, EPUB, and DOCX outputs.
