@@ -10,6 +10,7 @@ All notable changes to the WordPress Security Style Guide.
 ## 1.2.0 — 2026-06-17
 
 ### Added
+- Added release-metadata validation so frontmatter version/date and the latest changelog release heading stay aligned, with optional tag/date enforcement during release publication.
 - Added a `Series review` issue form so quarterly and pre-release cross-document alignment checks can be tracked explicitly.
 - Added a repo-local generated-artifact smoke validator and a dedicated `Validate Artifacts` workflow for PDF, EPUB, and DOCX outputs.
 - Added a Playwright-based PDF visual smoke test and dedicated workflow with committed baselines for critical page regions.
@@ -17,6 +18,7 @@ All notable changes to the WordPress Security Style Guide.
 - Added Learn WordPress's [Writing in the WordPress voice](https://learn.wordpress.org/course/writing-in-the-wordpress-voice/) as an authoritative source for WordPress-specific voice, tone, accessibility, and global-audience guidance, and recommended the course to regular contributors and communications staff.
 
 ### Changed
+- Moved full PDF/DOCX/EPUB publication to the tag-driven release workflow and converted `generate-docs.yml` into a manual preview/build workflow instead of an automatic `main`-push publisher.
 - Separated Playwright PDF visual validation from the artifact publish path so `generate-docs.yml` can publish after artifact checks while the dedicated visual workflow handles layout regression checks on workflow, packaging, and Pandoc changes.
 - Added glossary coverage for WordPress 7.0 AI-specific terminology, including the Abilities API, AI Client, and connector secret-management context.
 - Revised the voice and inclusive-communication sections to emphasize clear, friendly, positive-neutral writing for a global audience that includes ESL readers, newcomers, and people encountering WordPress through the document for the first time.
