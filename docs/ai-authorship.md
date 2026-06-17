@@ -4,10 +4,19 @@ This repository contains AI-assisted WordPress security editorial guidance. Port
 
 AI assistance is used as an editorial and implementation aid, not as an authority. Human maintainers remain responsible for deciding what belongs in the repository, reviewing changes before publication, and correcting errors.
 
+For WordPress-specific voice, tone, accessibility, and newcomer-friendliness,
+the editorial baseline is the Learn WordPress course
+[*Writing in the WordPress voice*](https://learn.wordpress.org/course/writing-in-the-wordpress-voice/).
+For product facts, version details, command behavior, and security claims, use
+WordPress technical documentation and other primary technical sources.
+
 ## Review expectations
 
 - Treat generated text and code as draft material until reviewed by a human maintainer.
 - Verify volatile facts, API names, version numbers, security claims, and command behavior against primary sources or local tests.
+- For editorial revisions, distinguish between technical authority and voice
+  authority: use Learn WordPress for WordPress voice expectations and primary
+  technical sources for factual claims.
 - Prefer small, reviewable changes with clear commit messages and linked source material where appropriate.
 - Do not publish security vulnerability details, exploit steps, or proof-of-concept material from AI output without following the repository security policy.
 

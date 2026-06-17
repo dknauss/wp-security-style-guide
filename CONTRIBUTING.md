@@ -24,6 +24,11 @@ Read these files first:
 - `docs/current-metrics.md`
 - `SECURITY.md`
 
+Recommended editorial training before making substantial voice-and-tone
+changes:
+
+- [Learn WordPress — Writing in the WordPress voice](https://learn.wordpress.org/course/writing-in-the-wordpress-voice/)
+
 Related repositories in this document series may also need aligned updates:
 
 - `wp-security-benchmark`
@@ -50,6 +55,9 @@ updates.
 - Verify WordPress-specific terminology against primary sources such as
   `developer.wordpress.org`, WordPress core documentation, or WordPress.org
   project pages.
+- For voice, tone, accessibility, and newcomer-friendliness, treat Learn
+  WordPress's *Writing in the WordPress voice* course as the primary
+  WordPress-specific editorial authority.
 - Keep terminology aligned within the document and across the other repos in
   this series.
 - Update `CHANGELOG.md` for user-visible documentation or workflow changes.
@@ -93,17 +101,20 @@ against committed baselines.
 For canonical document changes:
 
 1. Edit `WP-Security-Style-Guide.md`.
-2. Run `bash .github/scripts/verify-metrics.sh docs/current-metrics.md` if the
+2. If the change materially affects voice, tone, contributor guidance, or
+   audience accessibility expectations, verify that it still aligns with Learn
+   WordPress's *Writing in the WordPress voice* guidance.
+3. Run `bash .github/scripts/verify-metrics.sh docs/current-metrics.md` if the
    change affects structural counts, then update `docs/current-metrics.md` as
    needed.
-3. Update `CHANGELOG.md` for any user-visible documentation or workflow change.
-4. Merge to `main`.
-5. Confirm the phased `Generate PDF, Word & EPUB Documents` workflow completes:
+4. Update `CHANGELOG.md` for any user-visible documentation or workflow change.
+5. Merge to `main`.
+6. Confirm the phased `Generate PDF, Word & EPUB Documents` workflow completes:
    it should build the outputs, run artifact and PDF visual validation, and only
    then publish regenerated files back to `main`.
-6. Use the standalone `Validate Artifacts` and `Validate PDF Visuals` workflows
+7. Use the standalone `Validate Artifacts` and `Validate PDF Visuals` workflows
    for direct validator changes or manual rechecks without regenerating docs.
-7. Create a version tag only when enough user-visible changes justify a release.
+8. Create a version tag only when enough user-visible changes justify a release.
    After tagging, confirm the `Create Release` workflow publishes the generated
    artifacts for that tag.
 
@@ -142,6 +153,8 @@ Pull requests should:
 
 - describe what changed and why
 - mention any source verification performed
+- mention when Learn WordPress's *Writing in the WordPress voice* informed the
+  editorial decision
 - note whether metrics, changelog entries, or generated artifacts changed
 - call out any cross-document follow-up needed in the benchmark, hardening
   guide, or runbook repos
