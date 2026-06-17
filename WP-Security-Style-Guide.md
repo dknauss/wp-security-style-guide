@@ -138,7 +138,13 @@ Security writing in the WordPress ecosystem addresses several overlapping audien
 
 -   WordPress community members and contributors, including those involved in core development, plugin review, and support forums.
 
+Because the WordPress community is global, assume mixed levels of experience, cultural context, and English fluency. Many readers will be English as a second language (ESL) speakers, newcomers to WordPress, or people encountering WordPress security concepts for the first time. Write accordingly.
+
+Anything you publish may be someone's first introduction not only to WordPress security, but to WordPress as a project and community. Write to build trust, invite participation, and leave the reader better equipped than you found them.
+
 ### 4.2 Voice
+
+Use the Learn WordPress course [Writing in the WordPress voice](https://learn.wordpress.org/course/writing-in-the-wordpress-voice/) as the WordPress-specific editorial baseline for voice and accessibility. It recommends writing that is clear and friendly, on the positive side of neutral, and relatively jargon-free for a global audience.
 
 Your voice should convey the brand's personality and values. It is:
 
@@ -158,7 +164,7 @@ Tone adapts to context while the voice remains consistent. The default tone for 
 
 -   **Realistic about problems** — acknowledge risks squarely without catastrophizing.
 
--   **Optimistic and Reassuring** — emphasize what can be done and what has been fixed. Reassure the audience that our team is on top of the problem.
+-   **Positive-Neutral** — default to a clear, friendly, even-handed tone. Reassure only when the facts justify it. Do not drift into hype, marketing warmth, or false certainty.
 
 -   **Down-to-earth** — avoid jargon-heavy abstractions. Prefer plain language.
 
@@ -170,12 +176,24 @@ Tone adapts to context while the voice remains consistent. The default tone for 
 > Incident response guidance: calm, clear, directive. Prioritize the most important actions first.
 > Thought leadership: reflective, well-sourced, open to nuance and debate.
 
+### 4.4 WordPress Voice Baseline
+
+Before publishing, check whether the draft reflects the WordPress voice baseline:
+
+-   **Clear and friendly** — direct, welcoming, and easy to follow.
+-   **Positive side of neutral** — steady and constructive without being chirpy, salesy, or evasive.
+-   **Jargon-light by default** — define unavoidable technical terms on first use.
+-   **Global-reader aware** — avoid idioms, sarcasm, and culture-specific shorthand that may not travel well.
+-   **Newcomer-accessible** — assume some readers are still learning WordPress, security, or both.
+-   **Trust-building** — write as if this may be the reader's first experience with WordPress and its community norms.
 
 ## 5. Inclusive Communication
 
 ### 5.1 Bring Outsiders In
 
 Security writing can easily become a closed conversation among experts. Actively work against this. Explain jargon and technical terms the first time you use them. Spell out acronyms on first use. Helping people learn the vocabulary means helping them enter the community and take responsibility for their own security.
+
+Prefer shorter sentences over dense clause-stacking. Avoid sarcasm, insider banter, and idioms that may confuse international readers or make the writing feel exclusionary. Action-oriented language is usually better than blame-oriented language.
 
 ### 5.2 Language Choices
 
@@ -210,6 +228,17 @@ WordPress has its own vocabulary. Use terms consistently and prefer the forms fa
 -   **Multisite** — a WordPress feature enabling multiple sites on one installation. One word, capitalized.
 
 -   **Auto-update** — WordPress's built-in mechanism for applying updates automatically. Hyphenated.
+
+### 5.4 Before You Publish
+
+Before publishing WordPress security content, ask:
+
+-   Would a non-expert WordPress site owner understand the main point and next step?
+-   Did we define unavoidable technical language?
+-   Did we remove unnecessary idioms, sarcasm, and blame?
+-   Does the draft preserve the reader's dignity while still being candid about risk?
+-   Would this read well as a first introduction to WordPress and its community?
+-   Have we recommended the Learn WordPress course *Writing in the WordPress voice* when the audience includes regular contributors, maintainers, or communications staff?
 
 ## 6. Technical Formatting Guidelines
 
@@ -658,6 +687,8 @@ Plugin/Theme vulnerabilities must always be communicated to customers. To ensure
 ## 10. References and Further Reading
 
 **Style and Writing Guides**
+
+-   [Learn WordPress: Writing in the WordPress voice](https://learn.wordpress.org/course/writing-in-the-wordpress-voice/) — the authoritative WordPress-specific source for voice, tone, global audience awareness, and jargon restraint. Recommended for contributors, maintainers, developer advocates, support staff, and anyone who regularly writes about WordPress.
 
 -   [Bishop Fox Cybersecurity Style Guide](https://bishopfox.com/resources/cybersecurity-style-guide) — the comprehensive reference for cybersecurity terminology and formatting conventions. This style guide is directly indebted to it.
 
