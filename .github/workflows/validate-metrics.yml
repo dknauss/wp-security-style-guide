@@ -1,12 +1,10 @@
 name: Validate Metrics
 
 on:
+  # Run on EVERY pull request (no path filter) so this check can be made a
+  # required status check: a path-filtered required check never runs on PRs
+  # that miss the paths and leaves the PR blocked on a perpetually-pending check.
   pull_request:
-    paths:
-      - 'WP-Security-Style-Guide.md'
-      - 'docs/current-metrics.md'
-      - '.github/scripts/verify-metrics.sh'
-      - '.github/workflows/validate-metrics.yml'
   push:
     branches: [main]
     paths:
