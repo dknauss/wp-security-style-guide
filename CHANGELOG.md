@@ -14,6 +14,7 @@ All notable changes to the WordPress Security Style Guide.
 - `docs/current-metrics.md`: the glossary count is scoped to §8 (141 terms after this round's additions; the previous command also counted four bold labels outside the glossary).
 
 ### Changed
+- Regenerated the PDF, DOCX, and EPUB files from the corrected Markdown and refreshed the PDF visual baselines, which had not been updated since March 2026.
 - `CONTRIBUTING.md` describes the current manual build and release flow. `CLAUDE.md` uses portable command names.
 
 ## 1.2.1 — 2026-06-17
