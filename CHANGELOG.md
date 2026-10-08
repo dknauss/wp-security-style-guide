@@ -4,6 +4,18 @@ All notable changes to the WordPress Security Style Guide.
 
 ## Unreleased
 
+### Fixed
+- Corrected findings from the 2026-10-07 documentation review and verification round. Recorded in `ai-assisted-docs/reviews/rounds/2026-10-07/`. Sections 1–2 were not changed.
+- Glossary: corrected the Application password, Nonce, PHP security directives, SSRF, and `xmlrpc.php` entries.
+- Glossary: sorted entries letter by letter and stated the convention; added an Allowlist entry; removed a cross-reference with no target.
+- Glossary: Abilities API entry covers WordPress 7.1; AI Client entry separates what ships in core from the separately distributed JavaScript API; added an SLA entry.
+- §3.6: the certification example uses ISO/IEC 27001 and distinguishes attestation, validation, and authorization.
+- §7.2: communication channels are marked as an example to adapt.
+- `docs/current-metrics.md`: the glossary count is scoped to §8 (141 terms after this round's additions; the previous command also counted four bold labels outside the glossary).
+
+### Changed
+- `CONTRIBUTING.md` describes the current manual build and release flow. `CLAUDE.md` uses portable command names.
+
 ## 1.2.1 — 2026-06-17
 
 ### Fixed
