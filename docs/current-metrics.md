@@ -2,17 +2,17 @@
 
 This file is the single source of truth for architectural counts in the WordPress Security Style Guide. Check this file before writing any count in prose, and update it when adding or removing terms, sections, or structural elements.
 
-Last verified: 2026-06-16
+Last verified: 2026-10-07
 
 ## Architectural Facts
 
 | Fact | Value | Verification command | Last changed |
 |---|---:|---|---|
-| Document lines | 732 | `wc -l WP-Security-Style-Guide.md` | 2026-06-16 |
+| Document lines | 738 | `wc -l WP-Security-Style-Guide.md` | 2026-10-07 |
 | Major sections (H2) | 12 | `grep -cE '^## ' WP-Security-Style-Guide.md` | v1.0 |
 | Subsections (H3) | 28 | `grep -cE '^### ' WP-Security-Style-Guide.md` | 2026-06-16 |
-| Glossary terms | 143 | `grep -cE '^\*\*' WP-Security-Style-Guide.md` | 2026-06-14 |
-| "See also:" cross-references | 59 | `grep -c 'See also:' WP-Security-Style-Guide.md` | 2026-06-14 |
+| Glossary terms | 141 | `awk '/^## 8\. /{g=1;next} /^## /{g=0} g&&/^\*\*/{n++} END{print n}' WP-Security-Style-Guide.md` | 2026-10-07 |
+| "See also:" cross-references | 61 | `grep -c 'See also:' WP-Security-Style-Guide.md` | 2026-10-07 |
 | Table rows | 28 | `grep -cE '^\| ' WP-Security-Style-Guide.md` | v1.0 |
 | Blockquote lines | 13 | `grep -cE '^>' WP-Security-Style-Guide.md` | v1.0 |
 | Code fences | 0 | `grep -c '^\`\`\`' WP-Security-Style-Guide.md` | v1.0 |
@@ -29,7 +29,7 @@ Last verified: 2026-06-16
 | 5 | Inclusive communication | 4 subsections on terminology, accessibility, and pre-publish checks |
 | 6 | Technical formatting | 5 subsections on code, links, version references |
 | 7 | Vulnerability writing | 7 subsections on disclosure, severity, communication |
-| 8 | Glossary | 143 defined terms with cross-references |
+| 8 | Glossary | 141 defined terms with cross-references |
 | 9 | Operational appendix | Internal vulnerability communication workflow |
 
 ## Terminology Coverage
@@ -57,7 +57,7 @@ echo "H2 sections: $(grep -cE '^## ' WP-Security-Style-Guide.md)"
 echo "H3 subsections: $(grep -cE '^### ' WP-Security-Style-Guide.md)"
 
 echo "=== Glossary ==="
-echo "Terms: $(grep -cE '^\*\*' WP-Security-Style-Guide.md)"
+echo "Terms: $(awk '/^## 8\. /{g=1;next} /^## /{g=0} g&&/^\*\*/{n++} END{print n}' WP-Security-Style-Guide.md)"
 echo "See also links: $(grep -c 'See also:' WP-Security-Style-Guide.md)"
 
 echo "=== Content ==="
